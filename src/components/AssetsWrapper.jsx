@@ -7,7 +7,7 @@ export default function AssetsWrapper() {
         <>
             <Grid
             >
-
+            
             </Grid>
             <AssetsSlide />
             <Pagination />
