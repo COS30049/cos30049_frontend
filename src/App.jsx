@@ -1,38 +1,36 @@
 import './App.css';
 import React, { useState } from 'react';
 import NavBar from './components/NavBar';
+import Home from './views/Home';
+
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import PopUp from './components/PopUp';
 
 
+export default function App() {
+  // this state being add for illustration use only (since no back-end work yet)
+  const [logged, setLogged] = useState(false);
 
-// this one being add for illustration use within
-// const [logged, setLogged] = useState(false);
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//   }
-// ])
-
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <ThemeProvider theme={theme}>
-          <NavBar />
-          {/* <RouterProvider /> */}
-        </ThemeProvider>
-      </div>
-    );
-  }
+  return (
+          <div>
+            <ThemeProvider theme={theme}>
+              <NavBar />
+              <Router>
+                <Routes>
+                  <Route path='/' element={<Home />}/>
+                  <Route path='/login' element={<PopUp />}/>
+                </Routes>
+              </Router>
+            </ThemeProvider>
+          </div>
+        );
 }
 
 const theme = createTheme({
   components: {
-
   }
 })
 
-export default App;
+

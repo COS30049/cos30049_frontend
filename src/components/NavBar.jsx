@@ -1,4 +1,4 @@
-import {AppBar, Box, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from "@mui/material";
+import {AppBar, Box, Button, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from "@mui/material";
 import { ReactComponent as YourSvg } from '../logo.svg';
 import React from 'react';
 import {NavLink} from "react-router-dom";
@@ -7,7 +7,7 @@ export default function NavBar() {
     return (
         <ThemeProvider theme={theme}>
             <Box>
-                <AppBar position="static">
+                <AppBar position="static" className="nav-bar">
                     <Toolbar
                     sx={{
                         padding: '0px !important',
@@ -18,6 +18,7 @@ export default function NavBar() {
                         padding: "5px 25px 5px 25px",
                         fontSize: "22px",
                     }}
+                    disablePadding
                     >
                         <Box
                             sx={{
@@ -66,8 +67,9 @@ export default function NavBar() {
                         </Box>
                         <Box className="authentication" component="div"
                             sx={{
-                                display: "inline-block",
-                                float: "right",
+                                display: "flex",
+                                alignItems: "center",
+                                gap: '12px',
                             }}
                         >
                             <Link
@@ -80,6 +82,21 @@ export default function NavBar() {
                             >
                                 Login
                             </Link>
+                            <Button variant="contained" disableRipple
+                                sx={{
+                                    backgroundColor: "#1E1E1E",
+                                    color: "#F5F5F5",
+                                    textTransform: 'none',
+                                    py: '8px',
+                                    px: '12px',
+                                    fontWeight: '400',
+                                    border: 'none',
+                                    lineHeight: 'normal',
+                                    borderRadius: '9px',
+                                }}
+                            >
+                                Register
+                            </Button>
                         </Box>
                     </Toolbar>
                 </AppBar>
