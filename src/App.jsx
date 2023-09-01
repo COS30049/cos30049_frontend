@@ -3,18 +3,18 @@ import React, { useState } from 'react';
 import NavBar from './components/NavBar';
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
 
 // this one being add for illustration use within
-const [logged, setLogged] = useState(false);
+// const [logged, setLogged] = useState(false);
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-  }
-])
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//   }
+// ])
 
 class App extends React.Component {
   render() {
@@ -22,7 +22,7 @@ class App extends React.Component {
       <div>
         <ThemeProvider theme={theme}>
           <NavBar />
-          <RouterProvider />
+          {/* <RouterProvider /> */}
         </ThemeProvider>
       </div>
     );

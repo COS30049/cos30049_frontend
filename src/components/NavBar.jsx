@@ -1,6 +1,7 @@
-import {AppBar, Box, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar} from "@mui/material";
+import {AppBar, Box, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from "@mui/material";
 import { ReactComponent as YourSvg } from '../logo.svg';
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 export default function NavBar() {
     return (
@@ -9,37 +10,77 @@ export default function NavBar() {
                 <AppBar position="static">
                     <Toolbar
                     sx={{
+                        padding: '0px !important',
                         display: 'flex',
                         alignItems: 'center',
+                        justifyContent: "space-between",
+                        backgroundColor: '#FFFFFF',
+                        padding: "5px 25px 5px 25px",
+                        fontSize: "22px",
                     }}
                     >
-                        <Box className="logo" component="span"
+                        <Box
                             sx={{
-                                paddingRight: '2rem',
+                                display: "flex"
                             }}
                         >
-                            <YourSvg fill="#648AF2" height={50}/>
+                            <Box className="logo" component="div"
+                                sx={{
+                                    paddingRight: '2rem',
+                                    display: "flex"
+                                }}
+                            >
+                                <YourSvg
+                                    fill="#648AF2" height={50}
+                                />
+                                
+                            </Box>
+                            <List className="link-lists" disablePadding
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                }}
+                            >
+                                <ListItem disablePadding
+                                    sx={{
+                                        mr:"15px",
+                                    }}
+                                >
+                                    <ListItemButton components="a" href="/trading">
+                                        Tradings
+                                    </ListItemButton>
+                                </ListItem>
+                                <ListItem disablePadding
+                                    sx={{
+                                        mr:"15px",
+                                    }}
+                                >
+                                    <ListItemButton components="a" href="/trading">
+                                        Stats
+                                    </ListItemButton>
+                                </ListItem>
+                                {/* <ListItemButton components="a" href="/stats">
+                                    <ListItemText primary="Stats"/>
+                                </ListItemButton> */}
+                            </List>
                         </Box>
-                        <List className="link-lists"
+                        <Box className="authentication" component="div"
                             sx={{
-                                display: 'flex',
-                                alignItems: 'center',
+                                display: "inline-block",
+                                float: "right",
                             }}
                         >
-                            <ListItem>
-                                <ListItemButton components="a" href="/trading">
-                                    Tradings
-                                </ListItemButton>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemButton components="a" href="/trading">
-                                    Stats
-                                </ListItemButton>
-                            </ListItem>
-                            {/* <ListItemButton components="a" href="/stats">
-                                <ListItemText primary="Stats"/>
-                            </ListItemButton> */}
-                        </List>
+                            <Link
+                                sx={{
+                                    textDecoration: 'none',
+                                    py: ".5rem",
+                                    px: "1rem",
+                                }}
+                                href="/login"
+                            >
+                                Login
+                            </Link>
+                        </Box>
                     </Toolbar>
                 </AppBar>
             </Box>
@@ -50,18 +91,11 @@ export default function NavBar() {
 
 const theme = createTheme({
     components: {
-        MuiAppBar: {
-            styleOverrides: {
-                root: {
-                    backgroundColor: '#FFFFFF',
-                    padding: "10px 25px 10px 25px",
-                }
-            }
-        },
         MuiList: {
             styleOverrides: {
                 root: {
                     display: "inline-block",
+                    
                 }
             }
         },
@@ -69,7 +103,6 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     display: "inline-block",
-                    fontSize: "1.5rem",
                 }
             }
         },
