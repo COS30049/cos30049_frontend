@@ -1,7 +1,7 @@
+import React from "react";
 import { Typography, Container } from "@mui/material";
 import AssetsWrapper from "../components/AssetsWrapper";
-import SearchBar from "components/SearchBar";
-import React from "react";
+import SearchBar from "../components/SearchBar";
 
 export default function Home() {
     return (

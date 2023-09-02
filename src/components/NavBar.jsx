@@ -1,9 +1,22 @@
-import {AppBar, Box, Button, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from "@mui/material";
+import React, { useState } from 'react';
+import {AppBar, Box, Button, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from '@mui/material';
 import { ReactComponent as YourSvg } from '../logo.svg';
-import React from 'react';
-import {NavLink} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { LoginModal, SignupModal } from './Modals';
 
 export default function NavBar() {
+    // this enables the login and sign-up modals to be switched back and forth
+    const [loginOpen, setLoginOpen] = useState(false);
+    const [signupOpen, setSignupOpen] = useState(false);
+
+    const handleLogin = (event) => {
+        setLoginOpen(true)
+    }
+    
+    const handleSignup = (event) => {
+        setSignupOpen(true)
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <Box>
@@ -72,16 +85,17 @@ export default function NavBar() {
                                 gap: '12px',
                             }}
                         >
-                            <Link
+                            <Button
                                 sx={{
                                     textDecoration: 'none',
                                     py: ".5rem",
                                     px: "1rem",
                                 }}
-                                href="/login"
+
+                                onClick={handleLogin}
                             >
                                 Login
-                            </Link>
+                            </Button>
                             <Button variant="contained" disableRipple
                                 sx={{
                                     backgroundColor: "#1E1E1E",
@@ -94,6 +108,8 @@ export default function NavBar() {
                                     lineHeight: 'normal',
                                     borderRadius: '9px',
                                 }}
+                                
+                                onClick={handleSignup}
                             >
                                 Register
                             </Button>
@@ -101,6 +117,8 @@ export default function NavBar() {
                     </Toolbar>
                 </AppBar>
             </Box>
+            <LoginModal open={loginOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />
+            <SignupModal open={signupOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />
         </ThemeProvider>
     )
 }
