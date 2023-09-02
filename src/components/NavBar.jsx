@@ -7,18 +7,20 @@ export default function NavBar() {
     return (
         <ThemeProvider theme={theme}>
             <Box>
-                <AppBar position="static" className="nav-bar">
-                    <Toolbar
+                <AppBar position="static" className="nav-bar" 
                     sx={{
-                        padding: '0px !important',
+                        px: "25px",
+                        backgroundColor: '#FFFFFF',
+                        fontSize: "18px",
+                    }}
+                >
+                    <Toolbar disableGutters={true}
+                    sx={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: "space-between",
-                        backgroundColor: '#FFFFFF',
-                        padding: "5px 25px 5px 25px",
-                        fontSize: "22px",
+                        
                     }}
-                    disablePadding
                     >
                         <Box
                             sx={{
@@ -32,7 +34,7 @@ export default function NavBar() {
                                 }}
                             >
                                 <YourSvg
-                                    fill="#648AF2" height={50}
+                                    fill="#648AF2" height={45}
                                 />
                                 
                             </Box>
@@ -93,6 +95,7 @@ export default function NavBar() {
                                     border: 'none',
                                     lineHeight: 'normal',
                                     borderRadius: '9px',
+                                    fontSize: "18px",
                                 }}
                             >
                                 Register

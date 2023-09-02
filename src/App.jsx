@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import NavBar from './components/NavBar';
 import Home from './views/Home';
 
-import { ThemeProvider } from '@mui/material';
+import { Box, Container, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import PopUp from './components/PopUp';
@@ -17,12 +17,19 @@ export default function App() {
           <div>
             <ThemeProvider theme={theme}>
               <NavBar />
-              <Router>
-                <Routes>
-                  <Route path='/' element={<Home />}/>
-                  <Route path='/login' element={<PopUp />}/>
-                </Routes>
-              </Router>
+              <Container disableGutters className='content' maxWidth={false}
+                sx={{
+                  m: '0',
+                  p: '0 50px',
+                }}
+              >
+                <Router>
+                  <Routes>
+                    <Route path='/' element={<Home />}/> 
+                    <Route path='/login' element={<PopUp />}/>
+                  </Routes>
+                </Router>
+              </Container>
             </ThemeProvider>
           </div>
         );

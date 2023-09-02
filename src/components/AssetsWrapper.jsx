@@ -7,7 +7,10 @@ export default function AssetsWrapper() {
         <>
             <CssBaseline />
             <AssetsSlide />
-            <Pagination />
+            <Pagination
+                count={10}
+                sx={{display: "flex", mx: "auto", justifyContent:"center"}}
+            />
         </>
         
     )
