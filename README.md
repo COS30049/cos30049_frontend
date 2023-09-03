@@ -27,4 +27,4 @@ Page is live at: [](https://cos30049.github.io/cos30049_frontend)
 | ---- | ---------- |
 | Ryan Vu | 103511424 |
 | Minh Nguyen | 103534696 |
-| Hoang Bao Phuc Chau  ID | 103523966 |
+| Hoang Bao Phuc Chau | 103523966 |
