@@ -20,7 +20,7 @@
 
 ## Deployment
 To deploy the app to Github Pages, run `npm run deploy` using your terminal of choice. You are recommended to run this command occasionally for the commits to take effects.  
-Page is live at: [https://cos30049.github.io/cos30049_frontend]
+Page is live at: https://cos30049.github.io/cos30049_frontend
 
 ## Team memeber
 | Name | Student ID |
