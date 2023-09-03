@@ -19,8 +19,8 @@
 3. Contribution Form: A form includes sections for the personal information of each team member, details of the contribution, and other additional information. Form is provided on Canvas Assignment page
 
 ## Deployment
-To deploy the app to Github Pages, run `npm run deploy` using your terminal of choice. You are recommended to run this command occasionally for the commits to take effects.
-Page is live at: [](https://cos30049.github.io/cos30049_frontend)
+To deploy the app to Github Pages, run `npm run deploy` using your terminal of choice. You are recommended to run this command occasionally for the commits to take effects.  
+Page is live at: [https://cos30049.github.io/cos30049_frontend]
 
 ## Team memeber
 | Name | Student ID |
