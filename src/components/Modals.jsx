@@ -29,12 +29,14 @@ const inputStyle = {
     "& div:has(input)": {
         borderRadius: '12px',
         bgcolor: '#F2F4F8',
-        width: '100%'
+        width: '100%',
+        height: '55px',
     },
 
     "& input" : {
         pt: "24px",
         pb: "8px",
+        boxSizing: "content-box"
     },
 
     "& ::after": {
@@ -112,9 +114,6 @@ function LoginModal({open, setLoginOpen, setSignupOpen}) {
                         <Button variant="action"
                             color="primary"
                             sx={ buttonStyle }
-
-                            // component="a" 
-                            // href="/login"
                         >
                             Log In
                         </Button>
