@@ -2,11 +2,22 @@ import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
     root: {
-        maxWidth: '75%'
+        height: '325px',
+        width: '300px',
+        borderRadius: '20px',
+        boxShadow: '0 0 20px rgba(0, 0, 0, 0.2)',
+        justifyContent: 'space-evenly',
+        boxSizing: "border-box",
     },
     media: {
-        height: 0,
-        paddingTop: '50%'
+        height: '200px',
+        width:'300px',
+        objectFit: 'contain',
+        justifyContent: 'center',
+        paddingTop: '50%',
+        backgroundColor: 'rgb( 228, 228, 228 )',
+        borderTopLeftRadius: '20px',
+        borderTopRightRadius: '20px',
     },
     cardActions: {
         display: 'flex',
@@ -15,6 +26,8 @@ export default makeStyles(() => ({
     cardContent: {
         display: 'flex',
         justifyContent: 'space-between',
-        borderRadius: '50px',
+    },
+    cardAllign:{
+        justifyContent: 'space-between',
     },
 }))

@@ -25,7 +25,7 @@ export default function NavBar() {
             <Box>
                 <AppBar position="static" className="nav-bar" 
                     sx={{
-                        px: "25px",
+                        px: "50px",
                         backgroundColor: '#FFFFFF',
                         fontSize: "18px",
                     }}
