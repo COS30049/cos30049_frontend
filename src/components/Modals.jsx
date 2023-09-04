@@ -67,7 +67,11 @@ const closeIcStyle = {
     float: 'right',
     mr: 0,
     fontSize: '2em',
-    cursor: 'pointer'
+    cursor: 'pointer',
+
+    "&:hover": {
+        fill: '#007fff',
+    }
 }
 
 
