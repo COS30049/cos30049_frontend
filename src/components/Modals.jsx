@@ -87,10 +87,7 @@ function LoginModal({open, setLoginOpen, setSignupOpen}) {
             >
                 <Box sx={wrapperStyle}>
                     <CloseIcon 
-                        sx={{
-                            
-                        }}
-
+                        sx={ closeIcStyle }
                         onClick={handleClose}
                     />
                     <Typography id="modal-loginModal-title" variant='h4' component="h2" 
@@ -140,14 +137,7 @@ function SignupModal({open, setLoginOpen, setSignupOpen}) {
             >
                 <Box sx={wrapperStyle}>
                     <CloseIcon 
-                        sx={{
-                            position: 'relative',
-                            float: 'right',
-                            mr: 0,
-                            fontSize: '2em',
-                            cursor: 'pointer'
-                        }}
-
+                        sx={ closeIcStyle }
                         onClick={handleClose}
                     />
                     <Typography id="modal-signupModal-title" variant='h4' component="h2" 
