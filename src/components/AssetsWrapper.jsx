@@ -8,6 +8,8 @@ import {useMediaQuery} from "@mui/material";
 
 //Mock up data
 import assetsDataFile from "../mock/assets.json";
+import theme from '../custom/theme';
+
 import { useTheme } from "@mui/styles";
 
 const assetsData = assetsDataFile;
@@ -24,8 +26,6 @@ console.dir(assetsData);
 
 
 const AssetsWrapper = () => {
-    const theme = useTheme();
-
     return(
         <>
         <Grid

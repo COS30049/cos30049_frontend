@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 import NavBar from './components/NavBar';
 import Home from './views/Home';
 
-import { Box, Container, ThemeProvider } from '@mui/material';
-import { createTheme } from '@mui/material';
+import { Container, ThemeProvider } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import PopUp from './components/PopUp';
-import Products from './components/AssetsWrapper';
+import theme from './custom/theme';
 
 export default function App() {
-  
+
   // this state being add for illustration use only (since no back-end work yet)
   const [logged, setLogged] = useState(false);
 
@@ -35,10 +34,3 @@ export default function App() {
           </div>
         );
 }
-
-const theme = createTheme({
-  components: {
-  }
-})
-
-

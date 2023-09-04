@@ -32,6 +32,10 @@ export default function NavBar() {
                         px: "50px",
                         backgroundColor: '#FFFFFF',
                         fontSize: "18px",
+
+                        [theme.breakpoints.down("md")] : {
+                            px: "25px",
+                        }
                     }}
                 >
                     <Toolbar disableGutters={true}
@@ -129,7 +133,6 @@ export default function NavBar() {
                                     border: 'none',
                                     lineHeight: 'normal',
                                     borderRadius: '9px',
-                                    fontSize: "18px",
                                 }}
                                 
                                 onClick={handleSignup}

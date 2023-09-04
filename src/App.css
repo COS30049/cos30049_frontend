@@ -3,7 +3,7 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif !important;
-  box-sizing: border-box !important;
+  box-sizing: border-box;
 }
 
 .App {
@@ -13,6 +13,7 @@
 .nav-bar * {
   font-size: 22px !important;
 }
+
 body {
   margin: 0;
   padding: 0;
