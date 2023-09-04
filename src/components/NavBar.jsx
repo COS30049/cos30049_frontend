@@ -4,6 +4,9 @@ import { ReactComponent as YourSvg } from '../logo.svg';
 import { NavLink } from 'react-router-dom';
 import { LoginModal, SignupModal } from './Modals';
 
+import theme from '../custom/theme';
+
+
 export default function NavBar() {
     // this enables the login and sign-up modals to be switched back and forth
     const [loginOpen, setLoginOpen] = useState(false);
@@ -126,37 +129,3 @@ export default function NavBar() {
         </ThemeProvider>
     )
 }
-
-
-const theme = createTheme({
-    components: {
-        MuiList: {
-            styleOverrides: {
-                root: {
-                    display: "inline-block",
-                    
-                }
-            }
-        },
-        MuiListItem: {
-            styleOverrides: {
-                root: {
-                    display: "inline-block",
-                }
-            }
-        },
-        MuiListItemButton: {
-            styleOverrides: {
-                root: {
-                    display: "inline-block",
-                    borderRadius: "8px",
-
-                    "&:hover": {
-                        backgroundColor: "#E4F1FF",
-                        color: "#007FFF"
-                    }
-                }
-            }
-        }
-    }
-  })
