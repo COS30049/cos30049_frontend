@@ -7,7 +7,7 @@ import { Box, Container, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import PopUp from './components/PopUp';
-import Products from './components/Products';
+import Products from './components/AssetsWrapper';
 
 export default function App() {
   // this state being add for illustration use only (since no back-end work yet)
@@ -30,9 +30,6 @@ export default function App() {
                   </Routes>
                 </Router>
               </Container>
-              <div>
-              <Products/>
-              </div>
             </ThemeProvider>
           </div>
         );
