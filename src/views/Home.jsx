@@ -1,21 +1,18 @@
+import React from "react";
 import { Typography, Container } from "@mui/material";
 import AssetsWrapper from "../components/AssetsWrapper";
-import SearchBar from "components/SearchBar";
-import React from "react";
+import SearchBar from "../components/SearchBar";
+import makeStyles from '../components/styles';
 
 export default function Home() {
+    const classes = makeStyles();
     return (
         <>
-            <Typography variant="p">Hello World</Typography>
             <SearchBar />
-            <Container
-                sx={{
-                    px:"100px",
-                }}
+            <Container disableGutters className={classes.cardAllign} maxWidth={false}
             >
-                <AssetsWrapper />
+                <AssetsWrapper/>
             </Container>
-            
         </>
     )
 }

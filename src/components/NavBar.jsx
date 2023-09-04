@@ -1,25 +1,65 @@
-import {AppBar, Box, Button, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from "@mui/material";
+import React, { useState } from 'react';
+import {AppBar, Box, Button, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from '@mui/material';
 import { ReactComponent as YourSvg } from '../logo.svg';
-import React from 'react';
-import {NavLink} from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { MenuIcon, IconButton} from '@mui/material';
+import { LoginModal, SignupModal } from './Modals';
+
+import theme from '../custom/theme';
+import { useTheme } from '@mui/styles';
+import { Menu } from '@mui/icons-material';
+
 
 export default function NavBar() {
+
+    const defaultTheme = useTheme();
+    // this enables the login and sign-up modals to be switched back and forth
+    const [loginOpen, setLoginOpen] = useState(false);
+    const [signupOpen, setSignupOpen] = useState(false);
+
+    const handleLogin = (event) => {
+        setLoginOpen(true)
+    }
+    
+    const handleSignup = (event) => {
+        setSignupOpen(true)
+    }
+
     return (
         <ThemeProvider theme={theme}>
             <Box>
-                <AppBar position="static" className="nav-bar">
-                    <Toolbar
+            
+                <AppBar position="static"
                     sx={{
-                        padding: '0px !important',
+                        px: "50px",
+                        backgroundColor: '#FFFFFF',
+                        fontSize: "18px",
+                    }}
+                >
+                    <Toolbar disableGutters={true}
+                    sx={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: "space-between",
-                        backgroundColor: '#FFFFFF',
-                        padding: "5px 25px 5px 25px",
-                        fontSize: "22px",
+                        
                     }}
-                    disablePadding
                     >
+                        <IconButton
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{
+                                mr: 2,
+                                display: "none",
+                                [theme.breakpoints.down("md")] : {
+                                    display: "inline-block"
+                                }
+                            }}
+                        >
+                            <Menu 
+                                fontSize={"large"}
+                            />
+                        </IconButton>
                         <Box
                             sx={{
                                 display: "flex"
@@ -32,11 +72,11 @@ export default function NavBar() {
                                 }}
                             >
                                 <YourSvg
-                                    fill="#648AF2" height={50}
+                                    fill="#648AF2" height={45}
                                 />
                                 
                             </Box>
-                            <List className="link-lists" disablePadding
+                            <List className="link-lists nav-bar" disablePadding
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
@@ -60,28 +100,26 @@ export default function NavBar() {
                                         Stats
                                     </ListItemButton>
                                 </ListItem>
-                                {/* <ListItemButton components="a" href="/stats">
-                                    <ListItemText primary="Stats"/>
-                                </ListItemButton> */}
                             </List>
                         </Box>
-                        <Box className="authentication" component="div"
+                        <Box className="authentication nav-bar" component="div"
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
                                 gap: '12px',
                             }}
                         >
-                            <Link
+                            <Button
                                 sx={{
                                     textDecoration: 'none',
                                     py: ".5rem",
                                     px: "1rem",
+                                    textTransform: "none",
                                 }}
-                                href="/login"
+                                onClick={handleLogin}
                             >
                                 Login
-                            </Link>
+                            </Button>
                             <Button variant="contained" disableRipple
                                 sx={{
                                     backgroundColor: "#1E1E1E",
@@ -93,7 +131,10 @@ export default function NavBar() {
                                     border: 'none',
                                     lineHeight: 'normal',
                                     borderRadius: '9px',
+                                    fontSize: "18px",
                                 }}
+                                
+                                onClick={handleSignup}
                             >
                                 Register
                             </Button>
@@ -101,40 +142,8 @@ export default function NavBar() {
                     </Toolbar>
                 </AppBar>
             </Box>
+            <LoginModal open={loginOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />
+            <SignupModal open={signupOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />
         </ThemeProvider>
     )
 }
-
-
-const theme = createTheme({
-    components: {
-        MuiList: {
-            styleOverrides: {
-                root: {
-                    display: "inline-block",
-                    
-                }
-            }
-        },
-        MuiListItem: {
-            styleOverrides: {
-                root: {
-                    display: "inline-block",
-                }
-            }
-        },
-        MuiListItemButton: {
-            styleOverrides: {
-                root: {
-                    display: "inline-block",
-                    borderRadius: "8px",
-
-                    "&:hover": {
-                        backgroundColor: "#E4F1FF",
-                        color: "#007FFF"
-                    }
-                }
-            }
-        }
-    }
-  })
