@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import {AppBar, Box, Button, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from '@mui/material';
 import { ReactComponent as YourSvg } from '../logo.svg';
 import { NavLink } from 'react-router-dom';
+import { MenuIcon, IconButton} from '@mui/material';
 import { LoginModal, SignupModal } from './Modals';
 
 import theme from '../custom/theme';
+import { useTheme } from '@mui/styles';
+import { Menu } from '@mui/icons-material';
 
 
 export default function NavBar() {
+
+    const defaultTheme = useTheme();
     // this enables the login and sign-up modals to be switched back and forth
     const [loginOpen, setLoginOpen] = useState(false);
     const [signupOpen, setSignupOpen] = useState(false);
@@ -23,7 +28,8 @@ export default function NavBar() {
     return (
         <ThemeProvider theme={theme}>
             <Box>
-                <AppBar position="static" className="nav-bar" 
+            
+                <AppBar position="static"
                     sx={{
                         px: "50px",
                         backgroundColor: '#FFFFFF',
@@ -38,6 +44,22 @@ export default function NavBar() {
                         
                     }}
                     >
+                        <IconButton
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{
+                                mr: 2,
+                                display: "none",
+                                [theme.breakpoints.down("md")] : {
+                                    display: "inline-block"
+                                }
+                            }}
+                        >
+                            <Menu 
+                                fontSize={"large"}
+                            />
+                        </IconButton>
                         <Box
                             sx={{
                                 display: "flex"
@@ -54,7 +76,7 @@ export default function NavBar() {
                                 />
                                 
                             </Box>
-                            <List className="link-lists" disablePadding
+                            <List className="link-lists nav-bar" disablePadding
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
@@ -78,12 +100,9 @@ export default function NavBar() {
                                         Stats
                                     </ListItemButton>
                                 </ListItem>
-                                {/* <ListItemButton components="a" href="/stats">
-                                    <ListItemText primary="Stats"/>
-                                </ListItemButton> */}
                             </List>
                         </Box>
-                        <Box className="authentication" component="div"
+                        <Box className="authentication nav-bar" component="div"
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
@@ -97,7 +116,6 @@ export default function NavBar() {
                                     px: "1rem",
                                     textTransform: "none",
                                 }}
-
                                 onClick={handleLogin}
                             >
                                 Login
