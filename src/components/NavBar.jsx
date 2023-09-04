@@ -92,6 +92,7 @@ export default function NavBar() {
                                     textDecoration: 'none',
                                     py: ".5rem",
                                     px: "1rem",
+                                    textTransform: "none",
                                 }}
 
                                 onClick={handleLogin}

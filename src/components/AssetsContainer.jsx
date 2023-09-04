@@ -9,7 +9,7 @@ const Product = ({product}) => {
     <Card className={classes.root}>
         <CardMedia className={classes.media} image='./images/Ethereum-ETH-Logo.png' title={product.name} />
         <CardContent>
-            <div >
+            <div>
                 <Typography variant="h5" gutterBottom>
                     {product.name}
                 </Typography>
