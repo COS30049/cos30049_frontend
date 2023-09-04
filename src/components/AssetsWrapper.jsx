@@ -41,7 +41,6 @@ const AssetsWrapper = () => {
         }}
         >
             {
-
                 assetsData.map((assetsSlide) => ( //using .map() method to iterate over each element in assetwrapper. Each element will be stored as assetslide 
                     <Grid item key={assetsSlide.id} xs={12} sm={6} md={4} lg={3} marginTop={6}>
                         <AssetsSlide assetsSlide={assetsSlide}/> 

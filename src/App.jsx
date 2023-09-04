@@ -10,6 +10,7 @@ import PopUp from './components/PopUp';
 import Products from './components/AssetsWrapper';
 
 export default function App() {
+  
   // this state being add for illustration use only (since no back-end work yet)
   const [logged, setLogged] = useState(false);
 

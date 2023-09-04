@@ -6,13 +6,11 @@ import { MenuIcon, IconButton} from '@mui/material';
 import { LoginModal, SignupModal } from './Modals';
 
 import theme from '../custom/theme';
-import { useTheme } from '@mui/styles';
 import { Menu } from '@mui/icons-material';
 
 
 export default function NavBar() {
 
-    const defaultTheme = useTheme();
     // this enables the login and sign-up modals to be switched back and forth
     const [loginOpen, setLoginOpen] = useState(false);
     const [signupOpen, setSignupOpen] = useState(false);
