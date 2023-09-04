@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 import Home from './views/Home';
 
 import { Container, ThemeProvider } from '@mui/material';
-import { BrowserRouter as Router, HashRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import PopUp from './components/PopUp';
 import theme from './custom/theme';
 
@@ -23,12 +23,12 @@ export default function App() {
                   p: '0 50px',
                 }}
               >
-                <HashRouter>
+                <Router>
                   <Routes>
                     <Route path='/' element={<Home />}/> 
                     <Route path='/login' element={<PopUp />}/>
                   </Routes>
-                </HashRouter>
+                </Router>
               </Container>
             </ThemeProvider>
           </div>
