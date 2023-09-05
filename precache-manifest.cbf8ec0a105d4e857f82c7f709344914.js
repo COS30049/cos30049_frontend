@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "dec5f7ec60159205251b",
+    "revision": "f91365fe5ef69501ffda",
     "url": "/cos30049_frontend/static/css/main.52fd5471.chunk.css"
   },
   {
-    "revision": "dec5f7ec60159205251b",
-    "url": "/cos30049_frontend/static/js/main.abaa19c9.chunk.js"
+    "revision": "f91365fe5ef69501ffda",
+    "url": "/cos30049_frontend/static/js/main.64fb26ea.chunk.js"
   },
   {
     "revision": "16e5da3c505d7f31da12",
     "url": "/cos30049_frontend/static/js/runtime~main.6036f4ff.js"
   },
   {
-    "revision": "926c261b28cd201e5a08",
-    "url": "/cos30049_frontend/static/js/2.d76a1fa1.chunk.js"
+    "revision": "01dca2e41c716f95d51b",
+    "url": "/cos30049_frontend/static/js/2.07674b77.chunk.js"
   },
   {
     "revision": "551e95b27638874fde2a",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/cos30049_frontend/static/media/logo.06ce0320.svg"
   },
   {
-    "revision": "ed7b7f718ded52cb26837599b16ec552",
+    "revision": "45e13f88034581f45979980a26d69a36",
     "url": "/cos30049_frontend/index.html"
   }
 ];
