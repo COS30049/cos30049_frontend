@@ -5,7 +5,7 @@ import Home from './views/Home';
 import Txnhistory from './views/TxnHistory'
 
 import { Container, ThemeProvider } from '@mui/material';
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, HashRouter Route, Routes} from 'react-router-dom';
 import theme from './custom/theme';
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
   return (
           <div>
             <ThemeProvider theme={theme}>
-              <Router>
+              <HashRouter>
               <NavBar />
                 <Container disableGutters className='content' maxWidth={false}
                   sx={{
@@ -36,7 +36,7 @@ export default function App() {
                     </Routes>
                   
                 </Container>
-              </Router>
+              </HashRouter>
             </ThemeProvider>
           </div>
         );
