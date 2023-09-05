@@ -16,7 +16,7 @@ export default function App() {
   return (
           <div>
             <ThemeProvider theme={theme}>
-              <HashRouter>
+              <Router>
               <NavBar />
                 <Container disableGutters className='content' maxWidth={false}
                   sx={{
@@ -36,7 +36,7 @@ export default function App() {
                     </Routes>
                   
                 </Container>
-              </HashRouter>
+              </Router>
             </ThemeProvider>
           </div>
         );
