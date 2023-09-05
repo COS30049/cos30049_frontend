@@ -5,7 +5,7 @@ import Home from './views/Home';
 import Txnhistory from './views/TxnHistory'
 
 import { Container, ThemeProvider } from '@mui/material';
-import { BrowserRouter as Router, HashRouter Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, HashRouter, Route, Routes} from 'react-router-dom';
 import theme from './custom/theme';
 
 export default function App() {
