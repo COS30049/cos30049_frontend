@@ -2,9 +2,10 @@
 // Notice: Parts of the code were referenced from https://www.youtube.com/watch?v=377AQ0y6LPA.
 // However, I will add some comments to show what I understand when referencing the code from it.
 import React from 'react';
-import { CardMedia, CardContent, Typography, Box, ThemeProvider } from '@mui/material';
+import { CardMedia, CardContent, Typography, Box, ThemeProvider, Chip } from '@mui/material';
 import useStyles from './styles'
 import theme from '../custom/theme';
+
 const AssetsSlide = ({assetsSlide}) => {
     const classes = useStyles();
   return ( 
@@ -37,12 +38,7 @@ const AssetsSlide = ({assetsSlide}) => {
                         </Typography>
                     </Box>
                     <Box component={"div"}>
-                        <Typography variant="h5" fontSize={15} >
-                            Category
-                        </Typography>
-                        <Typography fontWeight={500} variant="h5" color="text" fontSize={15}>
-                                {assetsSlide.tag}
-                        </Typography>
+                        <Chip label={assetsSlide.tag} color="secondary" fontSize={15} />
                     </Box>
                 </div>
             </CardContent>
