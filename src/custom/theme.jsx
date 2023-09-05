@@ -123,6 +123,18 @@ const theme = createTheme ({
                 },
             ],
         },
+
+        // Chip Theme
+        MuiChip: {
+            styleOverrides: {
+                root: {
+                    "& *": {
+                        color: "#fff",
+                        fontWeight: 600,
+                    }
+                }
+            }
+        }
     },
 });
 
