@@ -38,7 +38,7 @@ const AssetsSlide = ({assetsSlide}) => {
                         </Typography>
                     </Box>
                     <Box component={"div"}>
-                        <Chip label={assetsSlide.tag} color="secondary" fontSize={15} />
+                        <Chip label={assetsSlide.tag} color="info" fontSize={15}/>
                     </Box>
                 </div>
             </CardContent>

@@ -17,7 +17,13 @@ const theme = createTheme ({
             primary: '#191919',
             secondary: '#797979',
             hint: '#797979',
+            info: '#191919',
         },
+        info: {
+            main: "#191919",
+            light: '#191919',
+            dark: "#007fff",
+        }
     },
     components: {
         // App Bar or NavBar theme
