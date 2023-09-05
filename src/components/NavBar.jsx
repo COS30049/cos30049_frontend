@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import {AppBar, Box, Button, List, ListItemButton, ListItemText, ThemeProvider, Typography, createTheme, ListItem, Toolbar, Link} from '@mui/material';
+import {AppBar, Box, Drawer, Button, List, ThemeProvider, ListItem, Toolbar} from '@mui/material';
 import { ReactComponent as YourSvg } from '../logo.svg';
-import { NavLink } from 'react-router-dom';
-import { MenuIcon, IconButton} from '@mui/material';
+import { Link } from 'react-router-dom';
+import { IconButton} from '@mui/material';
 import { LoginModal, SignupModal } from './Modals';
 
 import theme from '../custom/theme';
 import { Menu } from '@mui/icons-material';
 
 
+const drawerWidth = '50%';
+
 export default function NavBar() {
+
+    const [drawer, setDrawer] = useState(false);
 
     // this enables the login and sign-up modals to be switched back and forth
     const [loginOpen, setLoginOpen] = useState(false);
@@ -23,11 +27,22 @@ export default function NavBar() {
         setSignupOpen(true)
     }
 
+    const handleDrawer = (event) => {
+        setDrawer((prev) => {
+            if(!prev) return true;
+            else return false;
+        });
+    }
+
     return (
         <ThemeProvider theme={theme}>
-            <Box>
-            
-                <AppBar position="static"
+            <Box
+                sx={{
+                    position:"sticky",
+                    zIndex: "999",
+                }}
+            >
+                <AppBar
                     sx={{
                         px: "50px",
                         backgroundColor: '#FFFFFF',
@@ -44,9 +59,12 @@ export default function NavBar() {
                         alignItems: 'center',
                         justifyContent: "space-between",
                         
+                        [theme.breakpoints.down('md')]: {
+                            justifyContent: 'start'
+                        }
                     }}
                     >
-                        <IconButton
+                        <IconButton className='mobile-menu-btn'
                             edge="start"
                             color="inherit"
                             aria-label="menu"
@@ -57,31 +75,43 @@ export default function NavBar() {
                                     display: "inline-block"
                                 }
                             }}
+                            onClick={handleDrawer}
                         >
                             <Menu 
                                 fontSize={"large"}
                             />
                         </IconButton>
-                        <Box
+                        <Box className="nav-list"
                             sx={{
                                 display: "flex"
+                                
                             }}
                         >
                             <Box className="logo" component="div"
                                 sx={{
                                     paddingRight: '2rem',
-                                    display: "flex"
+                                    minHeight: "45px",
+                                    
+                                    "& a": {
+                                        display: "flex",
+                                        alignItems: 'center',
+                                    }
                                 }}
                             >
-                                <YourSvg
-                                    fill="#648AF2" height={45}
-                                />
-                                
+                                <Link to="/">
+                                    <YourSvg
+                                        fill="#648AF2" height={45}
+                                    />
+                                </Link>
                             </Box>
                             <List className="link-lists nav-bar" disablePadding
                                 sx={{
                                     display: 'flex',
                                     alignItems: 'center',
+                                    
+                                    [theme.breakpoints.down('md')]: {
+                                        display: "none",
+                                    }
                                 }}
                             >
                                 <ListItem disablePadding
@@ -89,18 +119,19 @@ export default function NavBar() {
                                         mr:"15px",
                                     }}
                                 >
-                                    <ListItemButton components="a" href="/trading">
+                                    <Link to={"/tradings"} className='nav-links'
+                                    >
                                         Tradings
-                                    </ListItemButton>
+                                    </Link>
                                 </ListItem>
                                 <ListItem disablePadding
                                     sx={{
                                         mr:"15px",
                                     }}
                                 >
-                                    <ListItemButton components="a" href="/trading">
+                                    <Link to="/txnhistory" className='nav-links'>
                                         Stats
-                                    </ListItemButton>
+                                    </Link>
                                 </ListItem>
                             </List>
                         </Box>
@@ -109,6 +140,10 @@ export default function NavBar() {
                                 display: "flex",
                                 alignItems: "center",
                                 gap: '12px',
+
+                                [theme.breakpoints.down('md')]: {
+                                        display: "none",
+                                }
                             }}
                         >
                             <Button
@@ -141,6 +176,69 @@ export default function NavBar() {
                             </Button>
                         </Box>
                     </Toolbar>
+                    <Drawer
+                            sx={{
+                                display: "none",
+
+                                [theme.breakpoints.down('md')]: {
+                                    display: "block",
+
+                                },
+                                
+                                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, mx: 'auto', py: '30px'},
+                            }}
+                            ModalProps={{
+                                keepMounted: true, // Better open performance on mobile.
+                            }}
+                            open={drawer}
+                            onClose={handleDrawer}
+                    >
+                        <List className="link-lists nav-bar" disablePadding>
+                            <ListItem disablePadding
+                            >
+                                <Link to={"/tradings"} className='nav-links'
+                                >
+                                    Tradings
+                                </Link>
+                            </ListItem>
+                            <ListItem disablePadding
+                                sx={{
+                                }}
+                            >
+                                <Link to="/txnhistory" className='nav-links'>
+                                    Stats
+                                </Link>
+                            </ListItem>
+                        </List>
+                        <Box className="authentication nav-bar" component="div"
+                            sx={{
+                                width: '100%',
+                            }}
+                        >
+                            <Button
+                                sx={{
+                                    textDecoration: 'none',
+                                    py: ".5rem",
+                                    px: "1rem",
+                                    textTransform: "none",
+                                }}
+                                onClick={handleLogin}
+                            >
+                                Login
+                            </Button>
+                            <Button
+                                sx={{
+                                    textDecoration: 'none',
+                                    py: ".5rem",
+                                    px: "1rem",
+                                    textTransform: "none",
+                                }}
+                                onClick={handleLogin}
+                            >
+                                Register
+                            </Button>
+                        </Box>
+                    </Drawer>
                 </AppBar>
             </Box>
             <LoginModal open={loginOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />

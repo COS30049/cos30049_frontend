@@ -2,7 +2,7 @@ import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
     root: {
-        height: '325px',
+        minHeight: '350px',
         width: '300px',
         borderRadius: '20px',
         boxShadow: '0 0 20px rgba(0, 0, 0, 0.2)',
@@ -26,6 +26,8 @@ export default makeStyles(() => ({
     cardContent: {
         display: 'flex',
         justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        rowGap: "15px",
     },
     cardAllign:{
         justifyContent: 'space-between',

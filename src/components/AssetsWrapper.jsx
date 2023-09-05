@@ -4,29 +4,27 @@
 import React from "react";
 import {Grid} from "@mui/material";
 import AssetsSlide from "./AssetsSlide";
-import {useMediaQuery} from "@mui/material";
 
 //Mock up data
 import assetsDataFile from "../mock/assets.json";
 import theme from '../custom/theme';
 
-import { useTheme } from "@mui/styles";
 
+//Read data from mock up file. if(backend == true) -> return "Call API using async + fetch"
 const assetsData = assetsDataFile;
 console.dir(assetsData);
 
-// const assetswrapper = [ //Creating an array for assetwrapper, each of the element will be import to each asset slide
-//     {id: 1, title: "NFT Asset 1", volume: '0.123456 ETH', floorprice: '0.001234 ETH'},
-//     {id: 2, title: 'NFT Asset 2', volume: '0.987654 ETH', floorprice: '0.000567 ETH'},
-//     {id: 3, title: 'NFT Asset 3', volume: '0.876543 ETH', floorprice: '0.000123 ETH'},
-//     {id: 4, title: 'NFT Asset 4', volume: '0.765432 ETH', floorprice: '0.000987 ETH'},
-//     {id: 5, title: 'NFT Asset 5', volume: '0.654321 ETH', floorprice: '0.000234 ETH'},
-//     {id: 6, title: 'NFT Asset 6', volume: '0.543210 ETH', floorprice: '0.000876 ETH'},
-// ]
 
+const AssetsWrapper = ({query}) => {
+    console.log(query);
 
-const AssetsWrapper = () => {
-    return(
+    const filteredData = query? assetsData.filter(
+        (data) => {
+        if(data.floorPrice.toLowerCase().includes(query.toLowerCase()) || data.tag.toLowerCase().includes(query.toLowerCase()) || data.volume.toLowerCase().includes(query.toLowerCase()) || data.title.toLowerCase().includes(query.toLowerCase())) return data;
+    }) : assetsData
+    
+
+    return (
         <>
         <Grid
 
@@ -41,7 +39,7 @@ const AssetsWrapper = () => {
         }}
         >
             {
-                assetsData.map((assetsSlide) => ( //using .map() method to iterate over each element in assetwrapper. Each element will be stored as assetslide 
+                filteredData.map((assetsSlide) => ( //using .map() method to iterate over each element in assetwrapper. Each element will be stored as assetslide 
                     <Grid item key={assetsSlide.id} xs={12} sm={6} md={4} lg={3} marginTop={6}>
                         <AssetsSlide assetsSlide={assetsSlide}/> 
                     </Grid>
