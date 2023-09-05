@@ -2,14 +2,13 @@ import { Box, InputBase } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import React from "react";
 
-export default function SearchBar() {
+export default function SearchBar({exportQuery}) {
+
     return (
         <>
             <Box
                 sx={{
                     display: 'flex',
-                    display: '-ms-flexbox',
-                    display: '-webkit-flex',
                     alignItems: 'center',
                     px: "20px",
                     py: "2px",
@@ -20,7 +19,9 @@ export default function SearchBar() {
             >
                 <Search
                 />
-                <InputBase fullWidth placeholder="Search"
+                <InputBase
+                    fullWidth placeholder="Search"
+                    onChange={(e) => {exportQuery(e.target.value)}}
                     sx={{
                         border: 'none',
                         backgroundColor: "#FFFFFF",

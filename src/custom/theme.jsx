@@ -26,15 +26,25 @@ const theme = createTheme ({
                 MuiList: {
                     styleOverrides: {
                         root: {
-                            display: "inline-block",
-                            
+                            display: {xs: "block", lg: "inline-block"},
+                            width: '100%',
                         },
                     },
                 },
                 MuiListItem: {
                     styleOverrides: {
                         root: {
-                            display: "inline-block",
+                            display: {xs: "block", lg:"inline-block"},
+                            width: '100%',
+                            "& a": {
+                                textDecoration: "none",
+                                borderRadius: "8px",
+                                padding: "8px 16px",
+                                "&:hover": {
+                                    color: "#007FFF",
+                                    backgroundColor: "#e4f1ff",
+                                }
+                            }
                         },
                     },
                 },

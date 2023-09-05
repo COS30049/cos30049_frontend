@@ -2,10 +2,10 @@ import './App.css';
 import React, { useState } from 'react';
 import NavBar from './components/NavBar';
 import Home from './views/Home';
+import Txnhistory from './views/TxnHistory'
 
 import { Container, ThemeProvider } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import PopUp from './components/PopUp';
 import theme from './custom/theme';
 
 export default function App() {
@@ -16,20 +16,23 @@ export default function App() {
   return (
           <div>
             <ThemeProvider theme={theme}>
+              <Router>
               <NavBar />
-              <Container disableGutters className='content' maxWidth={false}
-                sx={{
-                  m: '0',
-                  p: '0 50px',
-                }}
-              >
-                <Router>
-                  <Routes>
-                    <Route path='/' element={<Home />}/> 
-                    <Route path='/login' element={<PopUp />}/>
-                  </Routes>
-                </Router>
-              </Container>
+                <Container disableGutters className='content' maxWidth={false}
+                  sx={{
+                    m: '0',
+                    p: '0 50px',
+                  }}
+                >
+                  
+                    <Routes>
+                      <Route path='/' element={<Home />}/> 
+                      <Route path='/tradings' element={<Home />} />
+                      <Route path='/txnhistory' element={<Txnhistory />} />
+                    </Routes>
+                  
+                </Container>
+              </Router>
             </ThemeProvider>
           </div>
         );
