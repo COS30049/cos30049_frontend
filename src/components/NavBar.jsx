@@ -130,7 +130,7 @@ export default function NavBar() {
                                     }}
                                 >
                                     <Link to="/txnhistory" className='nav-links'>
-                                        Stats
+                                        History
                                     </Link>
                                 </ListItem>
                             </List>
@@ -206,7 +206,7 @@ export default function NavBar() {
                                 }}
                             >
                                 <Link to="/txnhistory" className='nav-links'>
-                                    Stats
+                                    History
                                 </Link>
                             </ListItem>
                         </List>

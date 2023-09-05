@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { Typography, Container, Box } from "@mui/material";
 import SearchBar from "../components/SearchBar";
-import makeStyles from '../components/styles';
 import TxnTable from "../components/TxnTable";
 
 export default function Txnhistory() {

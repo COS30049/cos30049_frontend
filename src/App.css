@@ -86,3 +86,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
+div>td {
+  background-color: #007FFF;
+}

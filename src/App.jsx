@@ -22,6 +22,10 @@ export default function App() {
                   sx={{
                     m: '0',
                     p: '0 50px',
+
+                    [theme.breakpoints.down("md")] : {
+                      p: '0 25px',
+                    }
                   }}
                 >
                   
