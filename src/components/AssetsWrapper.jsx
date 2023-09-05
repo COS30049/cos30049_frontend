@@ -10,8 +10,6 @@ import {useMediaQuery} from "@mui/material";
 import assetsDataFile from "../mock/assets.json";
 import theme from '../custom/theme';
 
-import { useTheme } from "@mui/styles";
-
 const assetsData = assetsDataFile;
 console.dir(assetsData);
 
