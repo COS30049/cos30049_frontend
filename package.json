@@ -75,6 +75,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "SET NODE_OPTIONS=--openssl-legacy-provider && node scripts/build.js"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
