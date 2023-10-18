@@ -1,5 +1,5 @@
 {
-  "homepage": "https://cos30049.github.io/cos30049_frontend",
+  "homepage": "https://cos30049.github.io/cos30049_frontend/",
   "name": "cos30049_frontend",
   "version": "0.1.0",
   "private": true,
@@ -9,9 +9,11 @@
     "@fontsource/roboto": "^5.0.8",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.7",
+    "@mui/styles": "^5.14.7",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
@@ -28,7 +30,8 @@
     "start": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build"
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

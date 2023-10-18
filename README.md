@@ -1,3 +1,5 @@
+# !!! Please Read Carefully
+
 # FRONT-END DEVELOPMENT 
 
 ## Core Functional Requirements
@@ -20,8 +22,10 @@
 
 ## Deployment
 1. Run `npm install` to install all added dependencies. This step is done ONCE only.
-2. To deploy the app to Github Pages, run `npm run deploy` using your terminal of choice. You are recommended to run this command occasionally for the commits to take effects.  
-3. The page will take some time to update itself. You can check the deployment status under the **Actions** tab.
+2. Run `npm start` to run the web app on localhost, or `npm run build` to build the web app to use for a server
+
+To deploy the app to Github Pages, run `npm run deploy` using your terminal of choice. You are recommended to run this command occasionally for the commits to take effects. The page will take some time to update itself. You can check the deployment status under the **Actions** tab.
+
 ## Team memeber
 | Name | Student ID |
 | ---- | ---------- |

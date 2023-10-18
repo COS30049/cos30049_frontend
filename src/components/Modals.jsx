@@ -4,22 +4,24 @@ import {
     Button, 
     Typography, 
     Modal, 
-    TextField } from '@mui/material';
-import { Link } from 'react-router-dom';
+    TextField, 
+    ThemeProvider} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-const wrapperstyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: '#ffffff',
-  border: '1px solid #707070',
-  borderRadius: '24px',
-  boxShadow: 24,
-  p: '40px',
-  pt: '25px'
+import theme from  '../custom/theme';
+
+const wrapperStyle = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: '#ffffff',
+    border: '1px solid #707070',
+    borderRadius: '24px',
+    boxShadow: 24,
+    p: '40px',
+    pt: '25px'
 };
 
 const inputStyle = {
@@ -27,12 +29,14 @@ const inputStyle = {
     "& div:has(input)": {
         borderRadius: '12px',
         bgcolor: '#F2F4F8',
-        width: '100%'
+        width: '100%',
+        height: '55px',
     },
 
     "& input" : {
         pt: "24px",
         pb: "8px",
+        boxSizing: "content-box"
     },
 
     "& ::after": {
@@ -44,6 +48,33 @@ const inputStyle = {
     },
 };
 
+const buttonStyle = {
+    width: 'fit-content', 
+    px: 5, 
+    py: 1, 
+    borderRadius: '30px', 
+    mt:5, 
+    mx: 'auto'
+};
+
+const modalTitleStyle = {
+    textAlign: 'center', 
+    fontWeight: 'bold', 
+    clear: 'both',
+    mt: 4 
+}
+
+const closeIcStyle = {
+    position: 'relative',
+    float: 'right',
+    mr: 0,
+    fontSize: '2em',
+    cursor: 'pointer',
+
+    "&:hover": {
+        fill: '#007fff',
+    }
+}
 
 
 function LoginModal({open, setLoginOpen, setSignupOpen}) {
@@ -54,32 +85,19 @@ function LoginModal({open, setLoginOpen, setSignupOpen}) {
     };
 
     return (
-        <div>
+        <ThemeProvider theme={theme}>
             <Modal
                 open={open}
                 onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
+                aria-labelledby="modal-loginModal-title"
             >
-                <Box sx={wrapperstyle}>
+                <Box sx={wrapperStyle}>
                     <CloseIcon 
-                        sx={{
-                            position: 'relative',
-                            float: 'right',
-                            mr: 0,
-                            fontSize: '2em',
-                            cursor: 'pointer'
-                        }}
-
+                        sx={ closeIcStyle }
                         onClick={handleClose}
                     />
-                    <Typography id="modal-modal-title" variant='h4' component="h2" 
-                        sx={{ 
-                            textAlign: 'center', 
-                            fontWeight: 'bold', 
-                            clear: 'both',
-                            mt: 4 
-                        }}
+                    <Typography id="modal-loginModal-title" variant='h4' component="h2" 
+                        sx={ modalTitleStyle }
                     >
                         Log In
                     </Typography>
@@ -90,28 +108,19 @@ function LoginModal({open, setLoginOpen, setSignupOpen}) {
 
                         <Box  sx={{ display: 'flex', gap: 1 }}>
                             <Typography>Don't have an account?</Typography>
-                            <Typography sx={{ cursor: 'pointer' }} onClick={switchSignup}>Register</Typography>
+                            <Typography variant="pseudoBtn" color="primary" onClick={switchSignup}>Register</Typography>
                         </Box>
                         
-                        <Button variant="contained" 
-                            sx={{
-                                width: 'fit-content', 
-                                px: 5, 
-                                py: 1, 
-                                borderRadius: '30px', 
-                                mt:5, 
-                                mx: 'auto'
-                            }}
-
-                            // component="a" 
-                            // href="/login"
+                        <Button variant="action"
+                            color="primary"
+                            sx={ buttonStyle }
                         >
                             Log In
                         </Button>
                     </Box>    
                 </Box>
             </Modal>
-        </div>
+        </ThemeProvider>
     );
 }
 
@@ -123,32 +132,19 @@ function SignupModal({open, setLoginOpen, setSignupOpen}) {
     };
 
     return (
-        <div>
+        <ThemeProvider theme={theme}>
             <Modal
                 open={open}
                 onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
+                aria-labelledby="modal-signupModal-title"
             >
-                <Box sx={wrapperstyle}>
+                <Box sx={wrapperStyle}>
                     <CloseIcon 
-                        sx={{
-                            position: 'relative',
-                            float: 'right',
-                            mr: 0,
-                            fontSize: '2em',
-                            cursor: 'pointer'
-                        }}
-
+                        sx={ closeIcStyle }
                         onClick={handleClose}
                     />
-                    <Typography id="modal-modal-title" variant='h4' component="h2" 
-                        sx={{ 
-                            textAlign: 'center', 
-                            fontWeight: 'bold', 
-                            clear: 'both',
-                            mt: 4 
-                        }}
+                    <Typography id="modal-signupModal-title" variant='h4' component="h2" 
+                        sx={ modalTitleStyle }
                     >
                         Sign Up
                     </Typography>
@@ -158,16 +154,21 @@ function SignupModal({open, setLoginOpen, setSignupOpen}) {
                         <TextField id="reg_pass" label="Password" variant="filled" sx={inputStyle} type="password"/>
                         <TextField id="ref_conf_pass" label="Confirm Password" variant="filled" sx={inputStyle} type="password"/>
 
-                        <Box  sx={{ display: 'flex', gap: 1 }}>
+                        <Box sx={{ display: 'flex', gap: 1 }}>
                             <Typography>Already have an account?</Typography>
-                            <Typography sx={{ cursor: 'pointer' }} onClick={switchLogin}>Log in</Typography>
+                            <Typography variant="pseudoBtn" color="primary" onClick={switchLogin}>Log in</Typography>
                         </Box>
                         
-                        <Button variant="contained" sx={{width: 'fit-content', px: 5, py: 1, borderRadius: '30px', mt:5, mx: 'auto'}}>Sign Up</Button>
+                        <Button variant="action"
+                            color="primary" 
+                            sx={ buttonStyle }
+                        >
+                            Sign Up
+                        </Button>
                     </Box>    
                 </Box>
             </Modal>
-        </div>
+        </ThemeProvider>
     );
 }
 

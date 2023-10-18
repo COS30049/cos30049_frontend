@@ -1,3 +1,15 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 50px;
+}
+
+body {
+  margin: 0;
+  padding: 60px 0 0 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 * {
   color: #191919;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -13,13 +25,25 @@
 .nav-bar * {
   font-size: 22px !important;
 }
-body {
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+.nav-bar .nav-links {
+  text-decoration: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  &:hover {
+    color: #007FFF;
+    background-color: #e4f1ff;
+  }
 }
 
+@media screen and (max-width : 899px) {
+  .nav-bar .nav-links
+  {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
 
 .logo {
   height: 3rem;
@@ -61,4 +85,8 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+div>td {
+  background-color: #007FFF;
 }
