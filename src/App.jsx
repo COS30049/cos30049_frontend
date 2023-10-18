@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import NavBar from './components/NavBar';
 import Home from './views/Home';
 import Txnhistory from './views/TxnHistory'
-
+import Profile from './components/Profile';
 import { Container, ThemeProvider } from '@mui/material';
 import { BrowserRouter as Router, HashRouter, Route, Routes} from 'react-router-dom';
 import theme from './custom/theme';
+
 
 export default function App() {
 
@@ -17,6 +18,7 @@ export default function App() {
           <div>
             <ThemeProvider theme={theme}>
               <Router>
+
               <NavBar />
                 <Container disableGutters className='content' maxWidth={false}
                   sx={{
@@ -33,6 +35,7 @@ export default function App() {
                       <Route path='/' element={<Home />}/> 
                       <Route path='/tradings' element={<Home />} />
                       <Route path='/txnhistory' element={<Txnhistory />} />
+                      <Route path='/profile' element={<Profile />}/>
                     </Routes>
                   
                 </Container>
