@@ -1,12 +1,20 @@
 import React from 'react';
 import { 
     Box, 
-    Button, 
+    Button,
+    Chip,
+    Grid,
     Typography, 
     Modal, 
     TextField, 
-    ThemeProvider} from '@mui/material';
+    ThemeProvider,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText} from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import TollIcon from '@mui/icons-material/Toll';
+import LoopIcon from '@mui/icons-material/Loop';
 
 import theme from  '../custom/theme';
 
@@ -186,4 +194,56 @@ function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
     );
 }
 
-export { LoginModal, SignupModal };
+function AssetDetailsModal({open, setDetailsOpen, id, name, price, volume, tag, imgPath}) {
+    const handleClose = () => setDetailsOpen(false);
+    return (
+        <ThemeProvider theme={theme}>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-loginModal-title"
+            >
+                <Box sx={{...wrapperStyle, width: 1000}}>
+                    <CloseIcon 
+                        sx={ closeIcStyle }
+                        onClick={handleClose}
+                    />
+                    
+                    <Grid container spacing={4}>
+                        <Grid item md={5}>
+                            <img src={imgPath} width='100%' style={{border: '0.1px solid white', borderRadius: '15px'}}/>
+                        </Grid>
+                        <Grid item md={7}>
+                            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%'}}>
+                                <div>
+                                    <Chip label={tag} color="info" fontSize={15} sx={{mb: 2}}/>
+                                    <Typography variant='h4' component='h1'>{name}</Typography>
+
+                                    <List sx={{display: 'flex' , gap: 3}}>
+                                        <ListItem sx={{gap: 1}} disablePadding>
+                                            <TollIcon/>
+                                            <Typography>{price}</Typography>
+                                        </ListItem>
+                                        <ListItem sx={{gap: 1}} disablePadding>
+                                            <LoopIcon/>
+                                            <Typography>{volume}</Typography>
+                                        </ListItem>
+                                    </List>
+                                </div>
+                                
+                                <Button variant="action"
+                                    color="primary" 
+                                    sx={{...buttonStyle, width: '100%' }}
+                                >
+                                    Buy
+                                </Button>
+                            </Box>
+                        </Grid>
+                    </Grid>  
+                </Box>
+            </Modal>
+        </ThemeProvider>
+    );
+}
+
+export { LoginModal, SignupModal, AssetDetailsModal };
