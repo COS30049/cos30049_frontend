@@ -20,7 +20,7 @@ const AssetsWrapper = ({query}) => {
 
     const filteredData = query? assetsData.filter(
         (data) => {
-        if(data.floorPrice.toLowerCase().includes(query.toLowerCase()) || data.tag.toLowerCase().includes(query.toLowerCase()) || data.volume.toLowerCase().includes(query.toLowerCase()) || data.title.toLowerCase().includes(query.toLowerCase())) return data;
+        if(data.price.toLowerCase().includes(query.toLowerCase()) || data.tag.toLowerCase().includes(query.toLowerCase()) || data.volume.toLowerCase().includes(query.toLowerCase()) || data.title.toLowerCase().includes(query.toLowerCase())) return data;
     }) : assetsData
     
 
