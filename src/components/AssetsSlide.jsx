@@ -54,11 +54,7 @@ const AssetsSlide = ({assetsSlide}) => {
                 </CardContent>
             </Box>
             <AssetDetailsModal open={detailsOpen} setDetailsOpen={setDetailsOpen}
-                id={assetsSlide.id}
-                name={assetsSlide.title}
-                price={assetsSlide.price}
-                volume={assetsSlide.volume}
-                tag={assetsSlide.tag}
+                asset={assetsSlide}
                 imgPath={imgPath}
             />
         </ThemeProvider>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {AppBar, Box, Drawer, Button, List, ThemeProvider, ListItem, Toolbar} from '@mui/material';
 import { ReactComponent as YourSvg } from '../logo.svg';
 import { Link } from 'react-router-dom';
@@ -23,11 +23,11 @@ export default function NavBar() {
     const[auth, setAuth] = useState(false);
 
     const handleLogin = (event) => {
-        setLoginOpen(true)
+        setLoginOpen(true);
     }
     
     const handleSignup = (event) => {
-        setSignupOpen(true)
+        setSignupOpen(true);
     }
 
     const handleDrawer = (event) => {
@@ -36,6 +36,17 @@ export default function NavBar() {
             else return false;
         });
     }
+
+    useEffect(() => {
+        const authS = localStorage.getItem("auth");
+        if (authS === "true") {
+            setAuth(authS === "true");
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("auth", auth.toString());
+    });
 
     return (
         <ThemeProvider theme={theme}>
@@ -181,6 +192,7 @@ export default function NavBar() {
                         </>)}
                             {auth && <Box>
                                 Username
+                                <Button onClick="localStorage.clear()">Logout</Button>
                             </Box>}
                         </Box>
                     </Toolbar>
@@ -248,6 +260,7 @@ export default function NavBar() {
                                 </Button></>)}
                             {auth && <Box>
                                 Username
+                                <Button onClick="localStorage.clear()">Logout</Button>
                             </Box>}
                         </Box>
                     </Drawer>

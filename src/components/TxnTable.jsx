@@ -1,17 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import getTransactionHistory from '../api/getTransactionHIstory';
 
-
-
-//Read data from mock up file. if(backend == true) -> return "Call API using async + fetch"
-import txnHistoryData from "../mock/txn.json";
 import { Table, TableCell, TableContainer, TableRow, TableHead, TableBody, TablePagination, TableFooter} from '@mui/material';
+import { Details } from '@mui/icons-material';
 
 const headColumn = ["#", "Method", "Block", "From", "To", "Amount", "Transaction Fee", "Age"];
 
 //Use prop to get access to search features.
 export default function TxnTable({query}) {
     const [page, setPage] = useState(0);
-    const historyData = txnHistoryData;
+    const [TxnHistoryData, setTxnHistoryData] = useState([]);
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
     const handlePageChange = (e, newPage) => {
@@ -22,8 +20,20 @@ export default function TxnTable({query}) {
         setPage(0);
     }
 
+    useEffect(() => {
+        getTransactionHistory()
+        .then(resp => resp.data)
+        .then(data => {
+            console.log(data);
+            setTxnHistoryData(data)
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+    }, [])
+
     //Filter Data from Search
-    let filteredData = historyData.filter((item) => {
+    let filteredData = query == "" ? TxnHistoryData: TxnHistoryData.filter((item) => {
         if(item.hash.toLowerCase().includes(query.toLowerCase()) || item.method.toLowerCase().includes(query.toLowerCase()) || item.block.toString().includes(query.toLowerCase()) || item.from.toLowerCase().includes(query.toLowerCase()) || item.to.toLowerCase().includes(query.toLowerCase()) || parseFloat(item.amount) >= parseFloat(query.toLowerCase()) || parseFloat(item.txnFee) >= parseFloat(query.toLowerCase()) || item.age.toLowerCase().includes(query.toLowerCase())) return item;
     })
 
@@ -52,14 +62,14 @@ export default function TxnTable({query}) {
                         filteredData                  
                         .slice((page * rowsPerPage), (page + 1)*rowsPerPage).map((data, key) => (
                             <TableRow key={key}>
-                                <TableCell>{data.hash}</TableCell>
-                                <TableCell>{data.method}</TableCell>
-                                <TableCell>{data.block}</TableCell>
-                                <TableCell>{data.from}</TableCell>
-                                <TableCell>{data.to}</TableCell>
-                                <TableCell>{data.amount} ETH</TableCell>
-                                <TableCell>{parseFloat(data.txnFee)} ETH</TableCell>
-                                <TableCell>{data.age}</TableCell>
+                                <TableCell>{data.details.transactionHash}</TableCell>
+                                <TableCell>{data.details.type == 0? "Deposit": "Transfer"}</TableCell>
+                                <TableCell>{data.details.blockHash}</TableCell>
+                                <TableCell>{data.details.from}</TableCell>
+                                <TableCell>{data.details.to? data.to : ""}</TableCell>
+                                <TableCell>{data.details.cumulativeGasUsed} ETH</TableCell>
+                                <TableCell>{parseFloat(data.details.gasUsed)} ETH</TableCell>
+                                <TableCell>{data.txn_time}</TableCell>
                             </TableRow>
                         ))
                     }

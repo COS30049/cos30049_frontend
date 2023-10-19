@@ -16,7 +16,6 @@ console.dir(assetsData);
 
 
 const AssetsWrapper = ({query}) => {
-    console.log(query);
 
     const filteredData = query? assetsData.filter(
         (data) => {

@@ -13,6 +13,7 @@ export default function App() {
 
   // this state being add for illustration use only (since no back-end work yet)
   const [logged, setLogged] = useState(false);
+  const [userInformation, setUserInfo] = useState({username: "", token:""});
 
   return (
           <div>

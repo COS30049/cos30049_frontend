@@ -163,7 +163,7 @@ function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
                         onClick={handleClose}
                     />
                     <Typography id="modal-signupModal-title" variant='h4' component="h2" 
-                        sx={ modalTitleStyle }
+                        // sx={ modalTitleStyle }
                     >
                         Sign Up
                     </Typography>
