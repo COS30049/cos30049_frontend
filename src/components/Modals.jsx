@@ -77,12 +77,16 @@ const closeIcStyle = {
 }
 
 
-function LoginModal({open, setLoginOpen, setSignupOpen}) {
+function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
     const handleClose = () => setLoginOpen(false);
     const switchSignup = (event) => {
         setLoginOpen(false)
         setSignupOpen(true)
     };
+
+    const handleAuth = (event) => {
+        setAuth(true)
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -114,6 +118,9 @@ function LoginModal({open, setLoginOpen, setSignupOpen}) {
                         <Button variant="action"
                             color="primary"
                             sx={ buttonStyle }
+                            component="a"
+                            href="/profile"
+                            onClick={handleAuth}
                         >
                             Log In
                         </Button>
@@ -124,12 +131,16 @@ function LoginModal({open, setLoginOpen, setSignupOpen}) {
     );
 }
 
-function SignupModal({open, setLoginOpen, setSignupOpen}) {
+function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
     const handleClose = () => setSignupOpen(false);
     const switchLogin = (event) => {
         setSignupOpen(false)
         setLoginOpen(true)
     };
+
+    const handleAuth = (event) => {
+        setAuth(true)
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -162,6 +173,9 @@ function SignupModal({open, setLoginOpen, setSignupOpen}) {
                         <Button variant="action"
                             color="primary" 
                             sx={ buttonStyle }
+                            component="a"
+                            href="/profile"
+                            onclick={handleAuth}
                         >
                             Sign Up
                         </Button>

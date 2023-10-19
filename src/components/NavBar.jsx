@@ -19,6 +19,9 @@ export default function NavBar() {
     const [loginOpen, setLoginOpen] = useState(false);
     const [signupOpen, setSignupOpen] = useState(false);
 
+    // this manages the log-in state of user
+    const[auth, setAuth] = useState(false);
+
     const handleLogin = (event) => {
         setLoginOpen(true)
     }
@@ -146,6 +149,7 @@ export default function NavBar() {
                                 }
                             }}
                         >
+                        {!auth && (<>
                             <Button
                                 sx={{
                                     textDecoration: 'none',
@@ -174,6 +178,10 @@ export default function NavBar() {
                             >
                                 Register
                             </Button>
+                        </>)}
+                            {auth && <Box>
+                                Username
+                            </Box>}
                         </Box>
                     </Toolbar>
                     <Drawer
@@ -215,34 +223,38 @@ export default function NavBar() {
                                 width: '100%',
                             }}
                         >
-                            <Button
-                                sx={{
-                                    textDecoration: 'none',
-                                    py: ".5rem",
-                                    px: "1rem",
-                                    textTransform: "none",
-                                }}
-                                onClick={handleLogin}
-                            >
-                                Login
-                            </Button>
-                            <Button
-                                sx={{
-                                    textDecoration: 'none',
-                                    py: ".5rem",
-                                    px: "1rem",
-                                    textTransform: "none",
-                                }}
-                                onClick={handleLogin}
-                            >
-                                Register
-                            </Button>
+                            {auth && (<>
+                                <Button
+                                    sx={{
+                                        textDecoration: 'none',
+                                        py: ".5rem",
+                                        px: "1rem",
+                                        textTransform: "none",
+                                    }}
+                                    onClick={handleLogin}
+                                >
+                                    Login
+                                </Button>
+                                <Button
+                                    sx={{
+                                        textDecoration: 'none',
+                                        py: ".5rem",
+                                        px: "1rem",
+                                        textTransform: "none",
+                                    }}
+                                    onClick={handleLogin}
+                                >
+                                    Register
+                                </Button></>)}
+                            {auth && <Box>
+                                Username
+                            </Box>}
                         </Box>
                     </Drawer>
                 </AppBar>
             </Box>
-            <LoginModal open={loginOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />
-            <SignupModal open={signupOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} />
+            <LoginModal open={loginOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} setAuth={setAuth} />
+            <SignupModal open={signupOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} setAuth={setAuth} />
         </ThemeProvider>
     )
 }
