@@ -17,8 +17,11 @@ import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 
 import theme from  "../custom/theme";
 
-import login from "../api/login"
-import register from "../api/register"
+import login from "../api/login";
+import register from "../api/register";
+import getUser from "../api/getUser";
+import buy from "../api/postBuy";
+import { AltRoute } from "@mui/icons-material";
 
 const wrapperStyle = {
     display: "flex",
@@ -157,7 +160,14 @@ function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
         .then(data => {
             if(data.hasOwnProperty("message"))
             {
-                setAuth(true)
+                setAuth(true);
+                getUser(username)
+                .then(resp => resp.data)
+                .then(data => {
+                    console.log(data);
+                    localStorage.setItem("token", data.token)
+                    localStorage.setItem("username", data.username)
+                })
                 handleClose()
             }
             else alert(data["error"])
@@ -272,7 +282,7 @@ function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
                         <Button variant="action"
                             color="primary" 
                             sx={ buttonStyle }
-                            onclick={handleAuth}
+                            onClick={handleAuth}
                         >
                             Sign Up
                         </Button>
@@ -285,6 +295,16 @@ function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
 
 function AssetDetailsModal({open, setDetailsOpen, asset, imgPath}) {
     const auth = localStorage.getItem("auth") === "true";
+
+    const handleBuyBtn = () => {
+        let accountToken = localStorage.getItem("token");
+        buy(accountToken , asset)
+        .then(resp => resp.data)
+        .then(data => {
+            if(data == 1) alert("Buy successful")
+            else alert("Fail, please contact us for more information")
+        })
+    }
 
     const handleClose = () => setDetailsOpen(false);
     return (
@@ -305,13 +325,13 @@ function AssetDetailsModal({open, setDetailsOpen, asset, imgPath}) {
                         <Grid item md={7}>
                             <Box sx={{display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%"}}>
                                 <div>
-                                    <Chip label={asset.tag} color="info" fontSize={15} sx={{mb: 2}}/>
-                                    <Typography variant="h4" component="h1">{asset.title}</Typography>
+                                    <Chip label={asset.category} color="info" fontSize={15} sx={{mb: 2}}/>
+                                    <Typography variant="h4" component="h1">{asset.name}</Typography>
 
                                     <List sx={{display: "flex" , gap: 3}}>
                                         <ListItem sx={{gap: 1}} disablePadding>
                                             <TollIcon/>
-                                            <Typography>{asset.price}</Typography>
+                                            <Typography>{asset.floor_price}</Typography>
                                         </ListItem>
                                         <ListItem sx={{gap: 1}} disablePadding>
                                             <LoopIcon/>
@@ -324,6 +344,7 @@ function AssetDetailsModal({open, setDetailsOpen, asset, imgPath}) {
                                     <Button variant="action"
                                         color="primary" 
                                         sx={{...buttonStyle, width: "100%" }}
+                                        onClick={handleBuyBtn}
                                     >
                                         Buy
                                     </Button> : 

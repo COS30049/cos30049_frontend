@@ -215,7 +215,7 @@ export default function NavBar() {
                                     onClick={() => {
                                             navigate("/profile");
                                         }}
-                                >Username</Button>
+                                >Welcome {localStorage.getItem("username")}</Button>
                                 <Button sx={{
                                         textDecoration: 'none',
                                         textTransform: "none",
@@ -299,7 +299,7 @@ export default function NavBar() {
                                     onClick={() => {
                                             navigate("/profile");
                                         }}
-                                    >Username</Button>
+                                    >Welcome {localStorage.getItem("username")}</Button>
                                 <Button onClick={handleLogout} variant="action" color="danger">Logout</Button>
                             </Box>}
                         </Box>
