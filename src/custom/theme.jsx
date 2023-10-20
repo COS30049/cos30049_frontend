@@ -103,11 +103,11 @@ const theme = createTheme ({
                     style: {
                         textDecoration: 'none',
                         textTransform: "none",
-                        backgroundColor: '#C41C1C',
+                        backgroundColor: '#c41c1c',
                         color: '#fff',
 
                         "&:hover": {
-                            backgroundColor: '#A51818',
+                            backgroundColor: '#a51818',
                         }
                     },
                 },

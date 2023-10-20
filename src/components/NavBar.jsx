@@ -258,7 +258,7 @@ export default function NavBar() {
                                 width: '100%',
                             }}
                         >
-                            {auth && (<>
+                            {!auth && (<>
                                 <Button
                                     sx={{
                                         textDecoration: 'none',
@@ -286,12 +286,23 @@ export default function NavBar() {
                                     sx={{
                                         textDecoration: 'none',
                                         textTransform: "none",
+                                        py: ".5rem",
+                                        px: "1rem",
                                     }} 
                                     onClick={() => {
                                             navigate("/profile");
                                         }}
                                     >Username</Button>
-                                <Button onClick={handleCf} variant="action" color="danger">Logout</Button>
+                                <Button 
+                                    sx={{
+                                        color: "#c41c1c",
+                                        textDecoration: 'none',
+                                        textTransform: "none",
+                                        py: ".5rem",
+                                        px: "1rem",
+                                    }} 
+                                    onClick={handleCf}
+                                    >Logout</Button>
                             </Box>}
                         </Box>
                     </Drawer> 
