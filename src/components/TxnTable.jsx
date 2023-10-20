@@ -62,11 +62,36 @@ export default function TxnTable({query}) {
                         filteredData                  
                         .slice((page * rowsPerPage), (page + 1)*rowsPerPage).map((data, key) => (
                             <TableRow key={key}>
-                                <TableCell>{data.details.transactionHash}</TableCell>
-                                <TableCell>{data.details.type == 0? "Deposit": "Transfer"}</TableCell>
-                                <TableCell>{data.details.blockHash}</TableCell>
-                                <TableCell>{data.details.from}</TableCell>
-                                <TableCell>{data.details.to? data.to : ""}</TableCell>
+                                <TableCell sx={{
+                                    maxWidth: "200px",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                }}>{data.details.transactionHash}</TableCell>
+                                <TableCell sx={{
+                                    maxWidth: "200px",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                }}>{data.details.hasOwnProperty("value")? "Transfer": "Self-Transfer"}</TableCell>
+                                <TableCell sx={{
+                                    maxWidth: "200px",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                }}>{data.details.blockHash}</TableCell>
+                                <TableCell sx={{
+                                    maxWidth: "200px",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                }}>{data.details.from}</TableCell>
+                                <TableCell sx={{
+                                    maxWidth: "200px",
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis",
+                                    whiteSpace: "nowrap",
+                                }}>{data.details.to? data.to : ""}</TableCell>
                                 <TableCell>{data.details.cumulativeGasUsed} ETH</TableCell>
                                 <TableCell>{parseFloat(data.details.gasUsed)} ETH</TableCell>
                                 <TableCell>{data.txn_time}</TableCell>

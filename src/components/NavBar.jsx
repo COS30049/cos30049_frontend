@@ -207,8 +207,25 @@ export default function NavBar() {
                             </Button>
                         </>)}
                             {auth && <Box>
-                                Username
-                                <Button onClick="localStorage.clear()">Logout</Button>
+                                <Button
+                                    sx={{
+                                        textDecoration: 'none',
+                                        textTransform: "none",
+                                    }} 
+                                    onClick={() => {
+                                            navigate("/profile");
+                                        }}
+                                >Username</Button>
+                                <Button sx={{
+                                        textDecoration: 'none',
+                                        textTransform: "none",
+                                        color: "#13131353",
+                                        "&:hover": {
+                                            color: "#fc0000",
+                                        }
+                                    }} 
+                                    onClick={handleLogout}>Logout
+                                </Button>
                             </Box>}
                         </Box>
                     </Toolbar>
@@ -250,7 +267,7 @@ export default function NavBar() {
                                 width: '100%',
                             }}
                         >
-                            {auth && (<>
+                            {!auth && (<>
                                 <Button
                                     sx={{
                                         textDecoration: 'none',
@@ -283,7 +300,7 @@ export default function NavBar() {
                                             navigate("/profile");
                                         }}
                                     >Username</Button>
-                                <Button onClick={handleCf} variant="action" color="danger">Logout</Button>
+                                <Button onClick={handleLogout} variant="action" color="danger">Logout</Button>
                             </Box>}
                         </Box>
                     </Drawer> 
