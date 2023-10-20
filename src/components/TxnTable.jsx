@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import getTransactionHistory from '../api/getTransactionHIstory';
+import getTransactionHistory from '../api/getTransactionHistory';
 
 import { Table, TableCell, TableContainer, TableRow, TableHead, TableBody, TablePagination, TableFooter} from '@mui/material';
 import { Details } from '@mui/icons-material';
