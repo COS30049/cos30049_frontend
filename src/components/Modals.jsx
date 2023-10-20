@@ -144,7 +144,7 @@ function CfModal({open, setCfOpen, onAccept, title, msg}) {
 }
 
 
-function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
+function LoginModal({open, setLoginOpen, setSignupOpen, setAuth, setName}) {
     const handleClose = () => setLoginOpen(false);
     const switchSignup = (event) => {
         setLoginOpen(false)
@@ -167,6 +167,7 @@ function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
                     console.log(data);
                     localStorage.setItem("token", data.token)
                     localStorage.setItem("username", data.username)
+                    setName(data.username)
                 })
                 handleClose()
             }
@@ -218,7 +219,7 @@ function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
     );
 }
 
-function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
+function SignupModal({open, setLoginOpen, setSignupOpen, setAuth, setName}) {
     const handleClose = () => setSignupOpen(false);
     const switchLogin = (event) => {
         setSignupOpen(false)
@@ -238,6 +239,7 @@ function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
                 if(data.hasOwnProperty("message"))
                 {
                     setAuth(true)
+                    setName(data.username)
                     handleClose()
                 }
                 else alert(data["error"])

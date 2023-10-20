@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 export default function Profile() {
   let auth = localStorage.getItem("auth") === "true";
   return ( auth ?
-    <Container>
+    <Container disableGutters maxWidth={false} sx={{my: "2rem"}}>
       <Typography variant="h4" gutterBottom>
         Profile
       </Typography>
@@ -14,7 +14,7 @@ export default function Profile() {
         label="Username"
         variant="outlined"
         disabled
-        defaultValue="Minh Nguyen"
+        defaultValue={localStorage.getItem("username")}
         fullWidth
         margin="normal"
       />
@@ -23,7 +23,7 @@ export default function Profile() {
         label="Address"
         variant="outlined"
         disabled
-        defaultValue="Melbourne"
+        defaultValue={localStorage.getItem("token")}
         fullWidth
         margin="normal"
       />

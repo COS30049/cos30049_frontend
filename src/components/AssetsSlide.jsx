@@ -36,7 +36,7 @@ function AssetsSlide({assetsSlide}) {
                                 Volume
                             </Typography>
                             <Typography fontWeight={500} variant="h5" color="text" fontSize={15}>
-                                {assetsSlide.volume}
+                                {assetsSlide.volume} ETH
                             </Typography>
                         </Box>
                         <Box component={"div"} sx={{width: "50%"}}>
@@ -44,7 +44,7 @@ function AssetsSlide({assetsSlide}) {
                                 Price
                             </Typography>
                             <Typography fontWeight={500} variant="h5" color="text" fontSize={15}>
-                                    {assetsSlide.floor_price}
+                                    {assetsSlide.price} ETH
                             </Typography>
                         </Box>
                         <Box component={"div"}>
