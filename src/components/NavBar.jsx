@@ -37,11 +37,13 @@ export default function NavBar() {
         });
     }
 
+    const logOut = (event) => {
+        localStorage.clear();
+    }
+
     useEffect(() => {
         const authS = localStorage.getItem("auth");
-        if (authS === "true") {
-            setAuth(authS === "true");
-        }
+        setAuth(authS === "true");
     }, []);
 
     useEffect(() => {
@@ -192,7 +194,7 @@ export default function NavBar() {
                         </>)}
                             {auth && <Box>
                                 Username
-                                <Button onClick="localStorage.clear()">Logout</Button>
+                                <Button onClick={logOut}>Logout</Button>
                             </Box>}
                         </Box>
                     </Toolbar>

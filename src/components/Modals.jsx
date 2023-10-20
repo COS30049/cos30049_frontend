@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import login from '../api/login'
 import { 
     Box, 
     Button,
@@ -15,6 +16,7 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import TollIcon from '@mui/icons-material/Toll';
 import LoopIcon from '@mui/icons-material/Loop';
+import { redirect } from 'react-router-dom';
 
 import theme from  '../custom/theme';
 
@@ -87,13 +89,29 @@ const closeIcStyle = {
 
 function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
     const handleClose = () => setLoginOpen(false);
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
     const switchSignup = (event) => {
         setLoginOpen(false)
         setSignupOpen(true)
     };
 
     const handleAuth = (event) => {
-        setAuth(true)
+        login({username: username, password: password})
+        .then(resp => resp.data)
+        .then(data => {
+            if(data.hasOwnProperty('message'))
+            {
+                setAuth(true)
+                redirect('/profile');
+            }
+            else alert(data["error"])
+        })
+        .catch((err) => {
+            console.error(err)
+        })
     }
 
     return (
@@ -115,8 +133,8 @@ function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
                     </Typography>
 
                     <Box sx={{mt:'60px', display:"flex" , gap: 2, flexDirection: 'column'}}>
-                        <TextField id="login_user" label="Username" variant="filled" sx={inputStyle} />
-                        <TextField id="login_pass" label="Password" variant="filled" sx={inputStyle} type="password"/>
+                        <TextField id="login_user" label="Username" variant="filled" sx={inputStyle} onChange={(e) => setUsername(e.target.value)}/>
+                        <TextField id="login_pass" label="Password" variant="filled" sx={inputStyle} type="password" onChange={(e) => setPassword(e.target.value)}/>
 
                         <Box  sx={{ display: 'flex', gap: 1 }}>
                             <Typography>Don't have an account?</Typography>
@@ -127,7 +145,6 @@ function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
                             color="primary"
                             sx={ buttonStyle }
                             component="a"
-                            href="/profile"
                             onClick={handleAuth}
                         >
                             Log In
@@ -141,12 +158,33 @@ function LoginModal({open, setLoginOpen, setSignupOpen, setAuth}) {
 
 function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
     const handleClose = () => setSignupOpen(false);
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [cfpassword, setCfPassword] = useState("");
+
     const switchLogin = (event) => {
         setSignupOpen(false)
         setLoginOpen(true)
     };
 
     const handleAuth = (event) => {
+        if(password === cfpassword)
+        {
+            login({username: username, password: password})
+            .then(resp => resp.data)
+            .then(data => {
+                if(data.hasOwnProperty('message'))
+                {
+                    setAuth(true)
+                }
+                else alert(data["error"])
+            })
+            .catch((err) => {
+                console.error(err)
+            })
+        }
+
         setAuth(true)
     }
 
@@ -163,15 +201,15 @@ function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
                         onClick={handleClose}
                     />
                     <Typography id="modal-signupModal-title" variant='h4' component="h2" 
-                        // sx={ modalTitleStyle }
+                        sx={ modalTitleStyle }
                     >
                         Sign Up
                     </Typography>
 
                     <Box sx={{mt:'60px', display:"flex" , gap: 2, flexDirection: 'column'}}>
-                        <TextField id="reg_user" label="Username" variant="filled" sx={inputStyle} />
-                        <TextField id="reg_pass" label="Password" variant="filled" sx={inputStyle} type="password"/>
-                        <TextField id="ref_conf_pass" label="Confirm Password" variant="filled" sx={inputStyle} type="password"/>
+                        <TextField id="reg_user" label="Username" variant="filled" sx={inputStyle}  onChange={(e) => setUsername(e.target.value)}/>
+                        <TextField id="reg_pass" label="Password" variant="filled" sx={inputStyle} type="password"  onChange={(e) => setPassword(e.target.value)}/>
+                        <TextField id="ref_conf_pass" label="Confirm Password" variant="filled" sx={inputStyle} type="password"  onChange={(e) => setCfPassword(e.target.value)}/>
 
                         <Box sx={{ display: 'flex', gap: 1 }}>
                             <Typography>Already have an account?</Typography>
@@ -182,7 +220,6 @@ function SignupModal({open, setLoginOpen, setSignupOpen, setAuth}) {
                             color="primary" 
                             sx={ buttonStyle }
                             component="a"
-                            href="/profile"
                             onclick={handleAuth}
                         >
                             Sign Up

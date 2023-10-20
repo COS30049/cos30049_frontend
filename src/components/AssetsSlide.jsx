@@ -8,7 +8,7 @@ import theme from '../custom/theme';
 
 import { AssetDetailsModal } from "./Modals";
 
-const AssetsSlide = ({assetsSlide}) => {
+function AssetsSlide({assetsSlide}) {
     const imgPath = "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e";
     const classes = useStyles();
 
@@ -27,7 +27,7 @@ const AssetsSlide = ({assetsSlide}) => {
                 <CardContent>
                     <div>
                         <Typography variant="h5" gutterBottom fontSize={20}> {/*Using gutterBottom to add margin to the bottom of the title*/}
-                            {assetsSlide.title}
+                            {assetsSlide.name}
                         </Typography>
                     </div>
                     <div className={classes.cardContent}>
@@ -44,11 +44,11 @@ const AssetsSlide = ({assetsSlide}) => {
                                 Price
                             </Typography>
                             <Typography fontWeight={500} variant="h5" color="text" fontSize={15}>
-                                    {assetsSlide.price}
+                                    {assetsSlide.floor_price}
                             </Typography>
                         </Box>
                         <Box component={"div"}>
-                            <Chip label={assetsSlide.tag} color="info" fontSize={15}/>
+                            <Chip label={assetsSlide.category} color="info" fontSize={15}/>
                         </Box>
                     </div>
                 </CardContent>
