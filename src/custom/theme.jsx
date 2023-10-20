@@ -76,6 +76,7 @@ const theme = createTheme ({
                 {
                     props: { variant: 'action', color: 'primary' },
                     style: {
+                        textDecoration: 'none',
                         backgroundColor: '#007fff',
                         color: '#fff',
 
@@ -87,8 +88,35 @@ const theme = createTheme ({
                 {    
                     props: { variant: 'action', color: 'secondary' },
                     style: {
+                        textDecoration: 'none',
+                        textTransform: "none",
                         backgroundColor: '#648af2',
                         color: '#fff',
+
+                        "&:hover": {
+                            backgroundColor: '#004dd9',
+                        }
+                    },
+                },
+                {    
+                    props: { variant: 'action', color: 'danger' },
+                    style: {
+                        textDecoration: 'none',
+                        textTransform: "none",
+                        backgroundColor: '#C41C1C',
+                        color: '#fff',
+
+                        "&:hover": {
+                            backgroundColor: '#A51818',
+                        }
+                    },
+                },
+                {    
+                    props: { variant: 'action', color: 'inactive' },
+                    style: {
+                        textDecoration: 'none',
+                        textTransform: "none",
+                        backgroundColor: '#648af2',
 
                         "&:hover": {
                             backgroundColor: '#004dd9',
