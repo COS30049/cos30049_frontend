@@ -1,10 +1,10 @@
 import React from "react";
-import TextField from '@mui/material/TextField';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import { TextField, Container, Typography } from "@mui/material";
+import { Navigate } from "react-router-dom";
 
 export default function Profile() {
-  return (
+  let auth = localStorage.getItem("auth") === "true";
+  return ( auth ?
     <Container>
       <Typography variant="h4" gutterBottom>
         Profile
@@ -27,6 +27,6 @@ export default function Profile() {
         fullWidth
         margin="normal"
       />
-    </Container>
+    </Container> : <Navigate to={"/"} />
   );
 }

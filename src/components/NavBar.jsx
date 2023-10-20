@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import {AppBar, Box, Drawer, Button, List, ThemeProvider, ListItem, Toolbar} from '@mui/material';
 import { ReactComponent as YourSvg } from '../logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IconButton} from '@mui/material';
-import { LoginModal, SignupModal } from './Modals';
+
+import { CfModal, LoginModal, SignupModal } from './Modals';
 
 import theme from '../custom/theme';
 import { Menu } from '@mui/icons-material';
@@ -13,6 +14,9 @@ const drawerWidth = '50%';
 
 export default function NavBar() {
 
+    const navigate = useNavigate();
+
+    const [cfOpen, setCfOpen] = useState(false);
     const [drawer, setDrawer] = useState(false);
 
     // this enables the login and sign-up modals to be switched back and forth
@@ -22,21 +26,7 @@ export default function NavBar() {
     // this manages the log-in state of user
     const[auth, setAuth] = useState(false);
 
-    const handleLogin = (event) => {
-        setLoginOpen(true);
-    }
-    
-    const handleSignup = (event) => {
-        setSignupOpen(true);
-    }
-
-    const handleDrawer = (event) => {
-        setDrawer((prev) => {
-            if(!prev) return true;
-            else return false;
-        });
-    }
-
+    console.log("auth ", auth);
     useEffect(() => {
         const authS = localStorage.getItem("auth");
         if (authS === "true") {
@@ -47,6 +37,32 @@ export default function NavBar() {
     useEffect(() => {
         localStorage.setItem("auth", auth.toString());
     });
+
+    const handleCf = (event) => {
+        setCfOpen(true)
+    }
+
+    const handleLogin = (event) => {
+        setLoginOpen(true);
+    }
+    
+    const handleSignup = (event) => {
+        setSignupOpen(true);
+    }
+
+    const handleLogout = () => {
+        setAuth(false);
+        setCfOpen(false);
+        localStorage.clear();
+        window.location.reload();
+    }
+
+    const handleDrawer = (event) => {
+        setDrawer((prev) => {
+            if(!prev) return true;
+            else return false;
+        });
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -143,7 +159,7 @@ export default function NavBar() {
                                         mr:"15px",
                                     }}
                                 >
-                                    <Link to="/txnhistory" className='nav-links'>
+                                    <Link to={"/txnhistory"} className='nav-links'>
                                         History
                                     </Link>
                                 </ListItem>
@@ -190,9 +206,17 @@ export default function NavBar() {
                                 Register
                             </Button>
                         </>)}
-                            {auth && <Box>
-                                Username
-                                <Button onClick="localStorage.clear()">Logout</Button>
+                            {auth && <Box sx={{display:'flex', alignItems: 'center', gap: 2}} >
+                                <Button 
+                                    sx={{
+                                        textDecoration: 'none',
+                                        textTransform: "none",
+                                    }}
+                                    onClick={() => {
+                                            navigate("/profile");
+                                        }}
+                                    >Username</Button>
+                                <Button onClick={handleCf} variant="action" color="danger">Logout</Button>
                             </Box>}
                         </Box>
                     </Toolbar>
@@ -202,7 +226,6 @@ export default function NavBar() {
 
                                 [theme.breakpoints.down('md')]: {
                                     display: "block",
-
                                 },
                                 
                                 '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, mx: 'auto', py: '30px'},
@@ -225,7 +248,7 @@ export default function NavBar() {
                                 sx={{
                                 }}
                             >
-                                <Link to="/txnhistory" className='nav-links'>
+                                <Link to={"/txnhistory"} className='nav-links'>
                                     History
                                 </Link>
                             </ListItem>
@@ -239,9 +262,9 @@ export default function NavBar() {
                                 <Button
                                     sx={{
                                         textDecoration: 'none',
+                                        textTransform: "none",
                                         py: ".5rem",
                                         px: "1rem",
-                                        textTransform: "none",
                                     }}
                                     onClick={handleLogin}
                                 >
@@ -250,24 +273,34 @@ export default function NavBar() {
                                 <Button
                                     sx={{
                                         textDecoration: 'none',
+                                        textTransform: "none",
                                         py: ".5rem",
                                         px: "1rem",
-                                        textTransform: "none",
                                     }}
                                     onClick={handleLogin}
                                 >
                                     Register
                                 </Button></>)}
                             {auth && <Box>
-                                Username
-                                <Button onClick="localStorage.clear()">Logout</Button>
+                                <Button
+                                    sx={{
+                                        textDecoration: 'none',
+                                        textTransform: "none",
+                                    }} 
+                                    onClick={() => {
+                                            navigate("/profile");
+                                        }}
+                                    >Username</Button>
+                                <Button onClick={handleCf} variant="action" color="danger">Logout</Button>
                             </Box>}
                         </Box>
-                    </Drawer>
+                    </Drawer> 
                 </AppBar>
             </Box>
+
             <LoginModal open={loginOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} setAuth={setAuth} />
             <SignupModal open={signupOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} setAuth={setAuth} />
+            <CfModal open={cfOpen} setCfOpen={setCfOpen} onAccept={handleLogout} title={"You are logging out!"} msg={"Do you wish to continue?"} />
         </ThemeProvider>
     )
 }
