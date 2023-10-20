@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import {AppBar, Box, Drawer, Button, List, ThemeProvider, ListItem, Toolbar} from '@mui/material';
-import { ReactComponent as YourSvg } from '../logo.svg';
-import { Link, useNavigate } from 'react-router-dom';
-import { IconButton} from '@mui/material';
+import React, { useState, useEffect } from "react";
+import {AppBar, Box, Drawer, Button, List, ThemeProvider, ListItem, Toolbar} from "@mui/material";
+import { ReactComponent as YourSvg } from "../logo.svg";
+import { Link, useNavigate } from "react-router-dom";
+import { IconButton} from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
 
-import { CfModal, LoginModal, SignupModal } from './Modals';
+import { CfModal, LoginModal, SignupModal } from "./Modals";
 
-import theme from '../custom/theme';
-import { Menu } from '@mui/icons-material';
+import theme from "../custom/theme";
+import { Menu } from "@mui/icons-material";
 
 
-const drawerWidth = '50%';
+const drawerWidth = "50%";
 
 export default function NavBar() {
 
@@ -18,6 +19,8 @@ export default function NavBar() {
 
     const [cfOpen, setCfOpen] = useState(false);
     const [drawer, setDrawer] = useState(false);
+
+    const [username, setUsername] = useState("");
 
     // this enables the login and sign-up modals to be switched back and forth
     const [loginOpen, setLoginOpen] = useState(false);
@@ -31,12 +34,9 @@ export default function NavBar() {
         const authS = localStorage.getItem("auth");
         if (authS === "true") {
             setAuth(authS === "true");
+            setUsername(localStorage.getItem("username"))
         }
-    }, []);
-
-    useEffect(() => {
-        localStorage.setItem("auth", auth.toString());
-    });
+    }, [auth]);
 
     const handleCf = (event) => {
         setCfOpen(true)
@@ -75,7 +75,7 @@ export default function NavBar() {
                 <AppBar
                     sx={{
                         px: "50px",
-                        backgroundColor: '#FFFFFF',
+                        backgroundColor: "#FFFFFF",
                         fontSize: "18px",
 
                         [theme.breakpoints.down("md")] : {
@@ -85,16 +85,16 @@ export default function NavBar() {
                 >
                     <Toolbar disableGutters={true}
                     sx={{
-                        display: 'flex',
-                        alignItems: 'center',
+                        display: "flex",
+                        alignItems: "center",
                         justifyContent: "space-between",
                         
-                        [theme.breakpoints.down('md')]: {
-                            justifyContent: 'start'
+                        [theme.breakpoints.down("md")]: {
+                            justifyContent: "start"
                         }
                     }}
                     >
-                        <IconButton className='mobile-menu-btn'
+                        <IconButton className="mobile-menu-btn"
                             edge="start"
                             color="inherit"
                             aria-label="menu"
@@ -119,12 +119,12 @@ export default function NavBar() {
                         >
                             <Box className="logo" component="div"
                                 sx={{
-                                    paddingRight: '2rem',
+                                    paddingRight: "2rem",
                                     minHeight: "45px",
                                     
                                     "& a": {
                                         display: "flex",
-                                        alignItems: 'center',
+                                        alignItems: "center",
                                     }
                                 }}
                             >
@@ -136,10 +136,10 @@ export default function NavBar() {
                             </Box>
                             <List className="link-lists nav-bar" disablePadding
                                 sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
+                                    display: "flex",
+                                    alignItems: "center",
                                     
-                                    [theme.breakpoints.down('md')]: {
+                                    [theme.breakpoints.down("md")]: {
                                         display: "none",
                                     }
                                 }}
@@ -149,7 +149,7 @@ export default function NavBar() {
                                         mr:"15px",
                                     }}
                                 >
-                                    <Link to={"/tradings"} className='nav-links'
+                                    <Link to={"/tradings"} className="nav-links"
                                     >
                                         Tradings
                                     </Link>
@@ -159,7 +159,7 @@ export default function NavBar() {
                                         mr:"15px",
                                     }}
                                 >
-                                    <Link to={"/txnhistory"} className='nav-links'>
+                                    <Link to={"/txnhistory"} className="nav-links">
                                         History
                                     </Link>
                                 </ListItem>
@@ -169,9 +169,9 @@ export default function NavBar() {
                             sx={{
                                 display: "flex",
                                 alignItems: "center",
-                                gap: '12px',
+                                gap: "12px",
 
-                                [theme.breakpoints.down('md')]: {
+                                [theme.breakpoints.down("md")]: {
                                         display: "none",
                                 }
                             }}
@@ -179,7 +179,7 @@ export default function NavBar() {
                         {!auth && (<>
                             <Button
                                 sx={{
-                                    textDecoration: 'none',
+                                    textDecoration: "none",
                                     py: ".5rem",
                                     px: "1rem",
                                     textTransform: "none",
@@ -192,13 +192,13 @@ export default function NavBar() {
                                 sx={{
                                     backgroundColor: "#1E1E1E",
                                     color: "#F5F5F5",
-                                    textTransform: 'none',
-                                    py: '8px',
-                                    px: '12px',
-                                    fontWeight: '400',
-                                    border: 'none',
-                                    lineHeight: 'normal',
-                                    borderRadius: '9px',
+                                    textTransform: "none",
+                                    py: "8px",
+                                    px: "12px",
+                                    fontWeight: "400",
+                                    border: "none",
+                                    lineHeight: "normal",
+                                    borderRadius: "9px",
                                 }}
                                 
                                 onClick={handleSignup}
@@ -209,7 +209,7 @@ export default function NavBar() {
                             {auth && <Box>
                                 <Button
                                     sx={{
-                                        textDecoration: 'none',
+                                        textDecoration: "none",
                                         textTransform: "none",
                                     }} 
                                     onClick={() => {
@@ -217,14 +217,11 @@ export default function NavBar() {
                                         }}
                                 >Welcome {localStorage.getItem("username")}</Button>
                                 <Button sx={{
-                                        textDecoration: 'none',
+                                        textDecoration: "none",
                                         textTransform: "none",
-                                        color: "#13131353",
-                                        "&:hover": {
-                                            color: "#fc0000",
-                                        }
-                                    }} 
-                                    onClick={handleLogout}>Logout
+                                        height: "100%"
+                                    }}
+                                    onClick={handleCf}><LogoutIcon sx={{fontSize: 50}}/>
                                 </Button>
                             </Box>}
                         </Box>
@@ -233,11 +230,11 @@ export default function NavBar() {
                             sx={{
                                 display: "none",
 
-                                [theme.breakpoints.down('md')]: {
+                                [theme.breakpoints.down("md")]: {
                                     display: "block",
                                 },
                                 
-                                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, mx: 'auto', py: '30px'},
+                                "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth, mx: "auto", py: "30px"},
                             }}
                             ModalProps={{
                                 keepMounted: true, // Better open performance on mobile.
@@ -248,7 +245,7 @@ export default function NavBar() {
                         <List className="link-lists nav-bar" disablePadding>
                             <ListItem disablePadding
                             >
-                                <Link to={"/tradings"} className='nav-links'
+                                <Link to={"/tradings"} className="nav-links"
                                 >
                                     Tradings
                                 </Link>
@@ -257,20 +254,20 @@ export default function NavBar() {
                                 sx={{
                                 }}
                             >
-                                <Link to={"/txnhistory"} className='nav-links'>
+                                <Link to={"/txnhistory"} className="nav-links">
                                     History
                                 </Link>
                             </ListItem>
                         </List>
                         <Box className="authentication nav-bar" component="div"
                             sx={{
-                                width: '100%',
+                                width: "100%",
                             }}
                         >
                             {!auth && (<>
                                 <Button
                                     sx={{
-                                        textDecoration: 'none',
+                                        textDecoration: "none",
                                         textTransform: "none",
                                         py: ".5rem",
                                         px: "1rem",
@@ -281,7 +278,7 @@ export default function NavBar() {
                                 </Button>
                                 <Button
                                     sx={{
-                                        textDecoration: 'none',
+                                        textDecoration: "none",
                                         textTransform: "none",
                                         py: ".5rem",
                                         px: "1rem",
@@ -293,22 +290,22 @@ export default function NavBar() {
                             {auth && <Box>
                                 <Button
                                     sx={{
-                                        textDecoration: 'none',
+                                        textDecoration: "none",
                                         textTransform: "none",
                                     }} 
                                     onClick={() => {
                                             navigate("/profile");
                                         }}
                                     >Welcome {localStorage.getItem("username")}</Button>
-                                <Button onClick={handleLogout} variant="action" color="danger">Logout</Button>
+                                <Button onClick={handleCf} variant="action" color="danger">Logout</Button>
                             </Box>}
                         </Box>
                     </Drawer> 
                 </AppBar>
             </Box>
 
-            <LoginModal open={loginOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} setAuth={setAuth} />
-            <SignupModal open={signupOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} setAuth={setAuth} />
+            <LoginModal open={loginOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} setAuth={setAuth} setName={setUsername}/>
+            <SignupModal open={signupOpen} setLoginOpen={setLoginOpen} setSignupOpen={setSignupOpen} setAuth={setAuth} setName={setUsername}/>
             <CfModal open={cfOpen} setCfOpen={setCfOpen} onAccept={handleLogout} title={"You are logging out!"} msg={"Do you wish to continue?"} />
         </ThemeProvider>
     )

@@ -17,8 +17,8 @@ function AssetsWrapper({query}) {
         getAssets()
         .then(resp => resp.data)
         .then(data => {
-            console.log(data);
             setAssetsData(data);
+            console.log(data);
         })
         .catch((err) => {
             console.error(err)
@@ -26,7 +26,7 @@ function AssetsWrapper({query}) {
     }, [])
 
     const filteredData = query == ""? assetsData : assetsData.filter((data) => {
-        if(data.floor_price.toLowerCase().includes(query.toLowerCase()) || data.category.toLowerCase().includes(query.toLowerCase()) || data.volume.toLowerCase().includes(query.toLowerCase()) || data.name.toLowerCase().includes(query.toLowerCase())) return data;
+        if(data.price.toString().includes(query.toLowerCase()) || data.category.toLowerCase().includes(query.toLowerCase()) || data.volume.toString().includes(query.toLowerCase()) || data.name.toLowerCase().includes(query.toLowerCase())) return data;
     })
     
 
