@@ -1,34 +1,69 @@
-# !!! Please Read Carefully
+<img align=right src="static/project-thumb.png" alt="project-thumb.png" width=350>
 
-# FRONT-END DEVELOPMENT 
+<h1>Decentralised Trading Platform - Frontend</h1>
 
-## Core Functional Requirements
+![npm](https://img.shields.io/npm/v/npm?logo=npm&color=648af2) ![npm](https://img.shields.io/npm/v/react?logo=react&label=React&color=648af2) ![npm](https://img.shields.io/npm/v/@mui%2Fmaterial?logo=mui&label=MUI&color=648af2)
 
-1. Users can view digital assets available for trading.
-2. The system should provide a search and filter functionality for users to discover specific assets of interest.
-3. Users should have access to a transaction history to view their past trades.
+<br><br><br>
 
-## Deliverables
-1. Static Website Source Code: A zipped file for the static front-end source code
-2. Project Design Document: A comprehensive project design report that details:
-    - Project background and introduction
-    - Team introduction
-    - Project requirement list and description
-         - You should demonstrate the understanding of the given system requirements
-    - Project design
-         - front-end prototype, e.g., sketches on paper, hand-drawn sketches on an iPad, and design drawings on a design platform (e.g., Axure, Sketch)
-         - overall system architecture design
-3. Contribution Form: A form includes sections for the personal information of each team member, details of the contribution, and other additional information. Form is provided on Canvas Assignment page
+<details open>
+<summary><b>Contents</b></summary><br>
 
-## Deployment
-1. Run `npm install` to install all added dependencies. This step is done ONCE only.
-2. Run `npm start` to run the web app on localhost, or `npm run build` to build the web app to use for a server
+- [**Overview**](#overview)
+- [**Installation**](#installation) 
+- [**Getting started**](#getting-started)
+- [**Members/Contributors**](#memberscontributors) 
+- [**Licence**](#licence)
 
-To deploy the app to Github Pages, run `npm run deploy` using your terminal of choice. You are recommended to run this command occasionally for the commits to take effects. The page will take some time to update itself. You can check the deployment status under the **Actions** tab.
+</details>
 
-## Team memeber
-| Name | Student ID |
-| ---- | ---------- |
-| Ryan Vu | 103511424 |
-| Minh Nguyen | 103534696 |
-| Hoang Bao Phuc Chau | 103523966 |
+## Overview
+<sup>[**\[ Back to Contents  ↑ \]**](#nav)</sup>
+
+**CRYPTOX** is a decentralised trading platform that utilises blockchain and smart contract technology.
+
+#### Core Functionalities
+- Browse available digital assets
+- Search assets by name, lowest price and their categories
+- Basic Authentication that allows users to log in/register and view and search their past transactions.
+- Trade assets, currently limited to one functionality: `Buy`
+
+
+![demo.png](static/demo.png)
+
+## Installation
+<sup>[**\[ Back to Contents  ↑ \]**](#nav)</sup>
+
+The frontend component requires [`NodeJS`](https://nodejs.org/en/download). Please make sure that your `NodeJS` version is at least `18.7.0`.
+
+To install the front-end component, just simply do the following:
+
+```
+git clone https://github.com/COS30049/cos30049_frontend.git
+npm install --force
+```
+
+
+## Getting started
+<sup>[**\[ Back to Contents  ↑ \]**](#nav)</sup>
+
+>⚠️ **This project/software requires further steps in the [backend component](https://github.com/COS30049/cos30049_backend) to be fully functional.**
+
+Once the backend component is installed, just run
+```
+npm start
+```
+
+## Members/Contributors
+<sup>[**\[ Back to Contents  ↑ \]**](#nav)</sup>
+
+| Name                 | Student ID | Email                         |
+| :------------------- | ---------- | :---------------------------: |
+| Minh Nguyen `LEADER` | 103534696  | 103534696@student.swin.edu.au |
+| Ryan Vu              | 103511424  | 103511424@student.swin.edu.au |
+| Hoang Bao Phuc Chau  | 103523966  | 103523966@student.swin.edu.au |
+
+## Licence
+<sup>[**\[ Back to Contents  ↑ \]**](#nav)</sup>
+
+This project/software is provided under `MIT Licence`,
