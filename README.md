@@ -6,7 +6,7 @@
 
 <br><br><br>
 
-<details open>
+<details id="nav" open>
 <summary><b>Contents</b></summary><br>
 
 - [**Overview**](#overview)
