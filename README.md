@@ -22,7 +22,7 @@
 
 **CRYPTOX** is a decentralised trading platform that utilises blockchain and smart contract technology.
 
-#### Core Functionalities
+#### Frontend Core Functionalities
 - Browse available digital assets
 - Search assets by name, lowest price and their categories
 - Basic Authentication that allows users to log in/register and view and search their past transactions.
@@ -36,7 +36,7 @@
 
 The frontend component requires [`NodeJS`](https://nodejs.org/en/download). Please make sure that your `NodeJS` version is at least `18.7.0`.
 
-To install the front-end component, just simply do the following:
+To install the frontend component, just simply do the following:
 
 ```
 git clone https://github.com/COS30049/cos30049_frontend.git
