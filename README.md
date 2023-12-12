@@ -2,7 +2,7 @@
 
 <h1>Decentralised Trading Platform - Frontend</h1>
 
-![npm](https://img.shields.io/npm/v/npm?logo=npm&color=648af2) ![npm](https://img.shields.io/npm/v/react?logo=react&label=React&color=648af2) ![npm](https://img.shields.io/npm/v/@mui%2Fmaterial?logo=mui&label=MUI&color=648af2)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 
 <br>
 
