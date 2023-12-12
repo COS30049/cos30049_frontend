@@ -4,7 +4,7 @@
 
 ![npm](https://img.shields.io/npm/v/npm?logo=npm&color=648af2) ![npm](https://img.shields.io/npm/v/react?logo=react&label=React&color=648af2) ![npm](https://img.shields.io/npm/v/@mui%2Fmaterial?logo=mui&label=MUI&color=648af2)
 
-<br><br><br>
+<br>
 
 <details id="nav" open>
 <summary><b>Contents</b></summary><br>
@@ -66,4 +66,4 @@ npm start
 ## Licence
 <sup>[**\[ Back to Contents  ↑ \]**](#nav)</sup>
 
-This project/software is provided under `MIT Licence`,
+This project/software is provided under `MIT Licence`.
